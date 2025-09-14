@@ -1,0 +1,25 @@
+{
+    "name": "@innovative-integration/shared",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Shared logic and dependencies for the Innovative Integration monorepo.",
+    "main": "index.ts",
+    "scripts": {
+        "db:migrate": "prisma migrate dev",
+        "db:generate": "prisma generate",
+        "db:push": "prisma db push",
+        "db:studio": "prisma studio",
+        "start:db": "tsx src/db.ts",
+        "dev:db": "nodemon --watch src --exec tsx src/db.ts"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.16.1"
+    },
+    "devDependencies": {
+        "@types/node": "^24.4.0",
+        "prisma": "latest",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.20.5",
+        "typescript": "^5.9.2"
+    }
+}

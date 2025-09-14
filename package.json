@@ -1,0 +1,25 @@
+{
+    "name": "innovative-integration-monorepo",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Monorepo for Innovative Integration's web and admin applications.",
+    "author": "Your Name",
+    "license": "MIT",
+    "workspaces": [
+        "Portfolio/webapp",
+        "Portfolio/admin-panel",
+        "Portfolio/shared"
+    ],
+    "scripts": {
+        "dev": "npm-run-all --parallel dev:*",
+        "dev:webapp": "npm run dev --workspace=webapp",
+        "dev:admin": "npm run dev --workspace=admin-panel",
+        "build": "npm-run-all build:*",
+        "build:webapp": "npm run build --workspace=webapp",
+        "build:admin": "npm run build --workspace=admin-panel"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10",
+        "npm-run-all": "4.1.5"
+    }
+}
