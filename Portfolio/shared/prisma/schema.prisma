@@ -13,3 +13,114 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+// main project category that is seeded to the db.
+model ProjectMainCategory {
+  id                   Int                  @id @default(autoincrement())
+  name                 String
+  imageUrl             String?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+  projectSubCategories ProjectSubCategory[]
+}
+
+// inner category of each main project.
+model ProjectSubCategory {
+  id                  Int                 @id @default(autoincrement())
+  name                String
+  imageUrl            String?
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  projectMainCategory ProjectMainCategory @relation(fields: [mainCategoryId], references: [id])
+  mainCategoryId      Int
+  Projects            Project[]
+}
+
+// actual project inside of inner category.
+model Project {
+  id                   Int                @id @default(autoincrement())
+  name                 String
+  imageUrl             String?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  clientName           String
+  challenge            String             @db.Text
+  solution             String             @db.Text
+  approach             Json
+  result               String             @db.Text
+  impact               Json
+  projectSubCategory   ProjectSubCategory @relation(fields: [projectSubCategoryId], references: [id])
+  projectSubCategoryId Int
+}
+
+// career 
+model Career {
+  id        Int      @id @default(autoincrement())
+  title     String
+  tagline   String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// events model
+model Event {
+  id                Int                 @id @default(autoincrement())
+  title             String
+  description       String
+  imageUrl          String?
+  eventDate         DateTime
+  eventTime         DateTime
+  location          String
+  status            EventStatus         @default(UPCOMING)
+  // post event details
+  detailedContent   Json?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  EventRegistration EventRegistration[]
+}
+
+// event registration model a unqiue constraint check so a same user cannot apply for the same event again.
+model EventRegistration {
+  id           Int      @id @default(autoincrement())
+  event        Event    @relation(fields: [eventId], references: [id])
+  eventId      Int
+  firstName    String
+  lastName     String
+  email        String
+  phoneNo      String
+  registeredAt DateTime @default(now())
+
+  @@unique([eventId, email])
+}
+
+// events status enums
+enum EventStatus {
+  UPCOMING
+  COMPLETED
+  CANCELLED
+}
+
+// blogs
+model Blog {
+  id              Int      @id @default(autoincrement())
+  previewHeading  String
+  previewImageUrl String?
+  description     Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// caseStudies
+model CaseStudy {
+  id          Int      @id @default(autoincrement())
+  title       String
+  clientName  String
+  description String?
+  imageUrl    String?
+  challenge   String   @db.Text
+  solution    String   @db.Text
+  result      Json
+  advantage   String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
