@@ -11,9 +11,10 @@
         "Portfolio/shared"
     ],
     "scripts": {
-        "dev": "npm-run-all --parallel dev:*",
+        "dev": "npm-run-all --parallel dev:webapp dev:admin dev:shared",
         "dev:webapp": "npm run dev --workspace=webapp",
         "dev:admin": "npm run dev --workspace=admin-panel",
+        "dev:shared": "npm run dev:db --workspace=@innovative-integration/shared",
         "build": "npm-run-all build:*",
         "build:webapp": "npm run build --workspace=webapp",
         "build:admin": "npm run build --workspace=admin-panel"
