@@ -1,0 +1,66 @@
+'use client';
+import React, { useState } from 'react'
+import CaseStudyFrom from '../case-study-form'
+import { ActionType } from '@/Utils/constants';
+import { Spin } from 'antd';
+import useMessage from '@/Utils/hooks/useMessage';
+import { useRouter } from 'next/navigation';
+import { apiClient } from '@/Utils/apiClient';
+
+const CreateCaseStudy = () => {
+
+    const { errorMsg, contextHolder, successMsg } = useMessage()
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+
+    const caseStudyCreateHandler = async (data: any) => {
+
+        setLoading(true);
+        const { imageUrl, ...rest } = data;
+        let imageUploadRes: any = null;
+        let payload;
+
+        // ⬇️ Handle image upload
+        if (imageUrl && imageUrl[0]?.originFileObj) {
+            const fileObj = imageUrl[0]?.originFileObj;
+            const formData = new FormData();
+            formData.append("file", fileObj);
+            imageUploadRes = await apiClient.post("/image/create", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+        }
+
+        payload = {
+            ...rest,
+            imageUrl: imageUploadRes?.url || null,
+        }
+
+        try {
+            let res: any = await apiClient.post("/casestudy/create", payload);
+            if (res?.success) {
+                successMsg('Case Study Created Successfully!')
+                router.back()
+            }
+        }
+        catch (error: any) {
+            errorMsg(error?.response?.data?.error)
+        }
+        finally {
+            setLoading(false)
+        }
+    }
+
+    return (
+        <div>
+            {contextHolder}
+            <Spin spinning={loading} fullscreen />
+            <CaseStudyFrom
+                caseStudyFormType={ActionType.add}
+                submitHandler={caseStudyCreateHandler}
+            />
+        </div>
+    )
+}
+
+export default CreateCaseStudy

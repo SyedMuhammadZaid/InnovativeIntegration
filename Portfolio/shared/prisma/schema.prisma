@@ -115,7 +115,7 @@ model CaseStudy {
   id          Int      @id @default(autoincrement())
   title       String
   clientName  String
-  description String?
+  description String?  @db.Text
   imageUrl    String?
   challenge   String   @db.Text
   solution    String   @db.Text
