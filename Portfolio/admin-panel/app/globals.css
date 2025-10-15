@@ -41,3 +41,7 @@
   padding-left: 1.5rem;
   /* Added proper padding */
 }
+
+.card-box-shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

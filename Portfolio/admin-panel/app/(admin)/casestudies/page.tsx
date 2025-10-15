@@ -35,7 +35,7 @@ const CaseStudies = () => {
         dataIndex: 'title',
         render: ((text, record) => {
           return (
-            <span title={text}>{text.slice(0, 50) + '...'}</span>
+            <span title={text}>{text.slice(0, 30) + '...'}</span>
           )
         })
       },
@@ -44,7 +44,7 @@ const CaseStudies = () => {
         dataIndex: 'clientName',
         render: ((text, record) => {
           return (
-            <span title={text}>{text.slice(0, 50) + '...'}</span>
+            <span title={text}>{text.slice(0, 40) + '...'}</span>
           )
         })
       },
@@ -53,7 +53,7 @@ const CaseStudies = () => {
         dataIndex: 'description',
         render: ((text, record) => {
           return (
-            <span title={text}>{text.slice(0, 50) + '...'}</span>
+            <span title={text}>{text.slice(0, 30) + '...'}</span>
           )
         })
       },
@@ -108,7 +108,6 @@ const CaseStudies = () => {
     localStorage.setItem('caseStudyRecord', JSON.stringify(record))
     router.push(`/casestudies/${record.id}`)
   }
-
 
 
   return (

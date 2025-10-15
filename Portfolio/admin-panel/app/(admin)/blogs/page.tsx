@@ -83,13 +83,13 @@ const Blogs = () => {
 
     // for creating blog
     const blogCreateBtnHandler = () => {
-        router.push('/blog/create')
+        router.push('/blogs/create')
     }
 
     // for editing blog
     const rowEditHandler = (record: any) => {
         localStorage.setItem('blogRecord', JSON.stringify(record))
-        router.push(`/blog/${record.id}`)
+        router.push(`/blogs/${record.id}`)
     }
 
     return (
