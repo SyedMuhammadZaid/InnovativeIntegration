@@ -1,27 +1,25 @@
 "use client";
 import { Layout, Menu, MenuProps } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
 const sideBarItems = ["events", "blogs", "casestudies", "careers", "projects"]
 
-const items2: MenuProps['items'] = sideBarItems.map(
-    (item, index) => {
-        return {
-            key: `${index}`,
-            label: `${item}`,
-            path: `/${item}`
-        };
-    },
-);
+const menuItems = sideBarItems.map((item) => ({
+    key: `/${item}`,
+    label: item.charAt(0).toUpperCase() + item.slice(1),
+}));
 
 const CustomSider = ({ setIsBreakPointTrigger }: { setIsBreakPointTrigger: React.Dispatch<React.SetStateAction<boolean>> }) => {
 
     const router = useRouter();
-    const menuItemClickHandler = (item: any) => {
-        router.replace(item?.item?.props?.path)
-    }
+    const pathname = usePathname();
+
+
+    const onMenuClick = (info: any) => {
+        router.replace(info.key);
+    };
 
     return (
         <>
@@ -37,9 +35,10 @@ const CustomSider = ({ setIsBreakPointTrigger }: { setIsBreakPointTrigger: React
             >
                 <Menu
                     mode="inline"
-                    style={{ height: '100%' }}
-                    items={items2}
-                    onClick={menuItemClickHandler}
+                    style={{ height: '100%', paddingTop:'10px' }}
+                    items={menuItems}
+                    onClick={onMenuClick}
+                    selectedKeys={[pathname]} // highlight active route
                 />
             </Sider>
         </>
