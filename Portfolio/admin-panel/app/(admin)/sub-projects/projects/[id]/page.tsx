@@ -1,22 +1,20 @@
 'use client';
-import AboutContainer from '@/components/about-container'
+import AboutContainer from '@/components/about-container';
 import CustomTable from '@/components/table';
-import { Avatar, Button, Col, Row, TableColumnsType } from 'antd'
+import { apiClient } from '@/Utils/apiClient';
+import { Avatar, Button, Col, Row, TableColumnsType } from 'antd';
 import moment from 'moment';
-import React, { useMemo, useState } from 'react'
-import SecondLayerProjectModal from './secondlayerprojectmodal';
 import { useRouter } from 'next/navigation';
-import { ActionType } from '@/Utils/constants';
+import React, { useEffect, useMemo, useState } from 'react'
 
-const Projects = () => {
+const ProjectsListing = ({ params }: { params: { id: string } }) => {
 
-    const [subProjectsRecords, setSubProjectsRecords] = useState([]);
+    const { id } = params;
+
+    const [projectsRecords, setProjectsRecords] = useState([]);
     const [rowRecord, setRowRecord] = useState<null | any>(null);
-    const [openProjectModal, setOpenProjectModal] = useState(false);
-    const [modalState, setModalState] = useState('');
     const [isRefresh, setIsRefresh] = useState(false);
     const [loading, setLoading] = useState(false);
-
     const router = useRouter();
 
     const columns: TableColumnsType<any> = useMemo(() => (
@@ -40,16 +38,16 @@ const Projects = () => {
                 dataIndex: 'name',
                 render: ((text, record) => {
                     return (
-                        <span title={text}>{text.slice(0, 14) + '...'}</span>
+                        <span title={text}>{text.slice(0, 35) + '...'}</span>
                     )
                 })
             },
             {
-                title: 'Parent Category',
-                dataIndex: 'projectMainCategory',
+                title: 'Sub-Project',
+                dataIndex: 'projectSubCategory',
                 render: ((text, record) => {
                     return (
-                        <span title={text}>{record?.name.slice(0, 14) + '...'}</span>
+                        <span title={record?.projectSubCategory?.name}>{record?.projectSubCategory?.name.slice(0, 35) + '...'}</span>
                     )
                 })
             },
@@ -67,52 +65,66 @@ const Projects = () => {
                 dataIndex: '',
                 render: ((text, record) => {
                     return (
-                        <Button type="primary" className='primary-btn' size='large' onClick={() => rowEditHandler(record)}>
-                            Edit
-                        </Button>
+                        <div className='flex items-center gap-5'>
+                            <Button type="primary" className='primary-btn' size='large' onClick={() => rowEditHandler(record)}>
+                                Edit
+                            </Button>
+                        </div>
                     )
                 })
             },
         ]
     ), [])
 
-    const subProjectCreateBtnHandler = () => {
-        setOpenProjectModal(true);
-        setModalState(ActionType.add)
+    useEffect(() => {
+        if (id) {
+            (async () => {
+                try {
+                    setLoading(true)
+                    let res: any = await apiClient.get(`/project/getProjectsBySubProjectId/${id}`);
+                    if (res?.success) {
+                        setProjectsRecords(res.data)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+                finally {
+                    setLoading(false)
+                }
+            })()
+        }
+    }, [id])
+
+    const projectCreateBtnHandler = () => {
+        router.push(`/sub-projects/projects/${id}/create`);
     }
 
-    const rowEditHandler = (record: any) => { }
+    // for editing case study
+    const rowEditHandler = (record: any) => {
+        localStorage.setItem('projectRecord', JSON.stringify(record))
+        router.push(`/sub-projects/projects/${id}/update/${record.id}`)
+    }
 
     return (
         <Row gutter={[16, 22]} className=''>
             <Col span={24}>
                 <AboutContainer
-                    heading='Sub Projects'
-                    btnText='Create Sub Project'
-                    btnClickHandler={subProjectCreateBtnHandler}
+                    heading='Projects'
+                    btnText='Create Project'
+                    btnClickHandler={projectCreateBtnHandler}
                 />
             </Col>
 
             <Col span={24}>
                 <CustomTable
                     columns={columns}
-                    dataSource={subProjectsRecords}
+                    dataSource={projectsRecords}
                     uniqueKey={(record: any) => record.id}
                     isLoading={loading}
                 />
             </Col>
-
-            <SecondLayerProjectModal
-                openProjectModal={openProjectModal}
-                setOpenProjectModal={setOpenProjectModal}
-                projectType={modalState}
-                editData={rowRecord}
-                fetchRecords={setIsRefresh}
-                isRefresh={isRefresh}
-                key={rowRecord?.id} // 👈 force remount when record changes
-            />
         </Row>
     )
 }
 
-export default Projects
+export default ProjectsListing

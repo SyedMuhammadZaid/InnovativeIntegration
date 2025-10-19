@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from 'react';
-import { Avatar, Button, Col, Row, TableColumnsType } from 'antd';
+import { Avatar, Button, Col, Row, TableColumnsType, Tag } from 'antd';
 import AboutContainer from '@/components/about-container';
 import CustomTable from '@/components/table';
 import EventModal from './eventModal';
@@ -87,6 +87,11 @@ const Events = () => {
             {
                 title: 'Status',
                 dataIndex: 'status',
+                render: ((text, record) => {
+                    return (
+                        <Tag color={text == 'COMPLETED' ? "#87d068" : text == 'CANCELLED' ? "#f50" : "#2db7f5"}>{text}</Tag>
+                    )
+                })
             },
             {
                 title: 'Action',

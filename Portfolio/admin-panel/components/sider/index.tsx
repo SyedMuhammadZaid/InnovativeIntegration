@@ -4,7 +4,7 @@ import Sider from 'antd/es/layout/Sider';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
-const sideBarItems = ["events", "blogs", "casestudies", "careers", "projects"]
+const sideBarItems = ["events", "blogs", "casestudies", "careers", "sub-projects"]
 
 const menuItems = sideBarItems.map((item) => ({
     key: `/${item}`,

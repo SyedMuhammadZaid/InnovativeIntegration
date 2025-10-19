@@ -5,5 +5,6 @@ export * from "./src/caseStudyService";
 export * from "./src/eventService";
 export * from "./src/projectService";
 export * from "./src/utils/constants";
+export * from "./src/userService";
 // export * from "./src/imageActions/uploadImage"; // if you want to expose image upload/delete functions
 // export * from "./src/imageActions/deleteImage.js";

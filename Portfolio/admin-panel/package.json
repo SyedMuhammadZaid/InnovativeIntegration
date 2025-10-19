@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.6.1",
     "@innovative-integration/shared": "*",
     "@prisma/client": "latest",
     "@tiptap/extension-bullet-list": "^3.6.6",

@@ -1,4 +1,3 @@
-import { EventStatus } from "@prisma/client/client";
 import prisma from "../prisma";
 import { eventStatus } from "../utils/constants";
 
@@ -9,7 +8,7 @@ interface createEvent {
     eventDate: string
     eventTime: string
     location: string
-    status: EventStatus
+    status: eventStatus
 }
 
 interface updateEvent {
@@ -20,7 +19,7 @@ interface updateEvent {
     eventDate?: string,
     eventTime?: string,
     location?: string
-    status?: EventStatus
+    status?: eventStatus
     detailedContent?: any
 }
 

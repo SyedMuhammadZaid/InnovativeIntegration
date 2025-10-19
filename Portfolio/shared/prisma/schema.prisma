@@ -15,25 +15,25 @@ datasource db {
 }
 
 // main project category that is seeded to the db.
-model ProjectMainCategory {
-  id                   Int                  @id @default(autoincrement())
-  name                 String
-  imageUrl             String?
-  createdAt            DateTime             @default(now())
-  updatedAt            DateTime             @updatedAt
-  projectSubCategories ProjectSubCategory[]
-}
+// model ProjectMainCategory {
+//   id                   Int                  @id @default(autoincrement())
+//   name                 String
+//   imageUrl             String?
+//   createdAt            DateTime             @default(now())
+//   updatedAt            DateTime             @updatedAt
+//   projectSubCategories ProjectSubCategory[]
+// }
 
 // inner category of each main project.
 model ProjectSubCategory {
-  id                  Int                 @id @default(autoincrement())
-  name                String
-  imageUrl            String?
-  createdAt           DateTime            @default(now())
-  updatedAt           DateTime            @updatedAt
-  projectMainCategory ProjectMainCategory @relation(fields: [mainCategoryId], references: [id])
-  mainCategoryId      Int
-  Projects            Project[]
+  id             Int       @id @default(autoincrement())
+  name           String
+  imageUrl       String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  // projectMainCategory ProjectMainCategory @relation(fields: [mainCategoryId], references: [id])
+  mainCategoryId String
+  Projects       Project[]
 }
 
 // actual project inside of inner category.
@@ -123,4 +123,13 @@ model CaseStudy {
   advantage   String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+// users
+model Users {
+  id        Int      @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

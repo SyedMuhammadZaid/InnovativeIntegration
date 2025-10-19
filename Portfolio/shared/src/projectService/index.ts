@@ -3,14 +3,14 @@ import prisma from "../prisma";
 interface CreateProjectSubCategory {
     name: string,
     imageUrl?: string,
-    mainCategoryId: number
+    mainCategoryId: string
 }
 
 interface UpdateProjectSubCategory {
     id: number,
     name?: string,
     imageUrl?: string,
-    mainCategoryId?: number
+    mainCategoryId?: string
 }
 
 interface CreateProject {
@@ -39,9 +39,9 @@ interface UpdateProject {
 }
 
 // for getting all the mainPorjectCategories (first layer)
-export const getAllMainProjectCategories = async () => {
-    return await prisma.projectMainCategory.findMany()
-}
+// export const getAllMainProjectCategories = async () => {
+//     return await prisma.projectMainCategory.findMany()
+// }
 
 // for creating project sub categories (second layer)
 export const createProjectSubCategory = async (data: CreateProjectSubCategory) => {
@@ -74,7 +74,9 @@ export const deletingProjectSubCategory = async (id: number) => {
 
 // for getting all project sub categories (second layer)
 export const getAllProjectSubCategories = async () => {
-    return await prisma.projectSubCategory.findMany()
+    return await prisma.projectSubCategory.findMany(
+        { orderBy: { createdAt: 'desc' } }
+    )
 }
 
 
@@ -115,10 +117,19 @@ export const deleteProject = async (id: number) => {
 
 // for getting all projects
 export const getAllProjects = async () => {
-    return await prisma.project.findMany();
+    return await prisma.project.findMany(
+        { orderBy: { createdAt: 'desc' } }
+    );
 }
 
 // for getting a single project
 export const getProject = async (id: number) => {
     return await prisma.project.findFirst({ where: { id } });
+}
+
+// for getting all projects belong to sub project by id
+export const getAllProjectsBySubProjectId = async (id: number) => {
+    return await prisma.project.findMany(
+        { where: { projectSubCategoryId: { equals: id } }, include: { projectSubCategory: true } },
+    )
 }

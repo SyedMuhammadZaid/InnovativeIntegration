@@ -4,9 +4,11 @@ import React from 'react'
 import logo from '../../assets/images/logo.png'
 import Image from 'next/image';
 import Link from 'next/link';
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 
-const CustomHeader = () => {
+const CustomHeader = ({ logoutHandler }: { logoutHandler: () => void }) => {
+
   return (
     <Header
       style={{
@@ -16,11 +18,12 @@ const CustomHeader = () => {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        background: '#3797BC'
+        background: '#3797BC',
+        justifyContent: 'space-between'
       }}
     >
       <div className="demo-logo">
-        <Link href={'/'}>
+        <Link href={'/home'}>
           <Image
             src={logo}
             alt="logo"
@@ -29,6 +32,11 @@ const CustomHeader = () => {
             className="w-[150px] h-[55px] mb-1 cursor-pointer"
           />
         </Link>
+      </div>
+
+      <div className='flex items-center gap-2'>
+        <RiLogoutBoxLine onClick={logoutHandler} className='cursor-pointer' size={22} color='#fff' />
+        <span onClick={logoutHandler} className='text-base text-white cursor-pointer'>Logout</span>
       </div>
     </Header>
   )

@@ -1,8 +1,8 @@
 import { apiClient } from '@/Utils/apiClient';
-import { ActionType } from '@/Utils/constants';
+import { ActionType, ParentLayerProjects } from '@/Utils/constants';
 import useMessage from '@/Utils/hooks/useMessage';
 import { Button, Col, Form, Input, Modal, Row, Select, Upload } from 'antd';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaPlus } from 'react-icons/fa';
 
 
@@ -35,12 +35,6 @@ const SecondLayerProjectModal = (
     const { successMsg, errorMsg, contextHolder } = useMessage();
     const [loading, setLoading] = useState(false);
     const [fileList, setFileList] = useState<any>([]);
-    const [parentProjects, setParentProjects] = useState([
-        {
-            label: 'testing',
-            value: 1
-        }
-    ])
 
     const projectSubmitHandler = async (data: any) => {
 
@@ -61,18 +55,19 @@ const SecondLayerProjectModal = (
 
         payload = {
             ...rest,
+            mainCategoryId: String(data?.mainCategoryId),
             imageUrl: imageUploadRes?.url || editData?.imageUrl || null,
         };
 
         try {
             if (projectType == ActionType.add) {
 
-                let res: any = await apiClient.post("/event/create", payload);
+                let res: any = await apiClient.post("/project/sub-project/create", payload);
                 if (res?.success) {
                     successMsg('Sub Project Created Successfully!')
                 }
             } else {
-                let res: any = await apiClient.put(`/event/update/${editData.id}`, payload);
+                let res: any = await apiClient.put(`/project/sub-project/update/${editData.id}`, payload);
                 if (res?.success) {
                     successMsg('Sub Project Updated Successfully!')
                 }
@@ -89,6 +84,27 @@ const SecondLayerProjectModal = (
         }
 
     };
+
+    useEffect(() => {
+        if (editData) {
+            const imageFileList = editData.imageUrl
+                ? [
+                    {
+                        uid: '-1',
+                        name: editData.imageUrl.split('/').pop() || 'existing_image.png',
+                        status: 'done',
+                        url: `${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${editData.imageUrl}`,
+                    },
+                ]
+                : [];
+            form.setFieldsValue({
+                name: editData.name,
+                imageUrl: imageFileList,
+                mainCategoryId: Number(editData.mainCategoryId)
+            });
+            setFileList(imageFileList); // ✅ keep Upload in sync
+        }
+    }, [editData, form]);
 
     return (
         <>
@@ -137,7 +153,7 @@ const SecondLayerProjectModal = (
                                 rules={[{ required: true, message: 'Please select!' }]}
                             >
                                 <Select
-                                    options={parentProjects} />
+                                    options={ParentLayerProjects} />
                             </Form.Item>
                         </Col>
 
