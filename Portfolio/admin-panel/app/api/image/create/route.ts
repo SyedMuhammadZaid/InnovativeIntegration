@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+export const runtime = "nodejs"; // 👈 ensures Node.js environment for fs and logging
+
 const uploadDir = path.join(process.cwd(), "public/uploads");
 
 // Ensure directory exists
@@ -27,9 +29,10 @@ export async function POST(req: NextRequest) {
         const filePath = path.join(uploadDir, fileName);
 
         fs.writeFileSync(filePath, buffer);
+        
+        console.log("Saving file to:", path.join(process.cwd(), "public", "uploads", fileName));
 
         const url = `/uploads/${fileName}`; // static public URL
-        console.log("Saving file to:", path.join(process.cwd(), "public", "uploads", fileName));
         return NextResponse.json({ success: true, url }, { status: 201 });
     } catch (err) {
         console.error(err);
