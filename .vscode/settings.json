@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "switchyard.proxy.rlwy.net",
+            "port": 39613,
+            "driver": "MySQL",
+            "name": "testing",
+            "database": "railway",
+            "username": "root",
+            "askForPassword": true
+        }
+    ]
+}
