@@ -28,6 +28,7 @@ const Events = () => {
                 title: 'Image',
                 dataIndex: 'imageUrl',
                 render: ((text, record) => {
+                    console.log(`image url complete: ${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${text}`)
                     return (
                         <Avatar
                             src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${text}`}
