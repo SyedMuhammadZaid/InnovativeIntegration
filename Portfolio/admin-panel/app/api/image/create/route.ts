@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-export const runtime = "nodejs"; // 👈 ensures Node.js environment for fs and logging
+export const runtime = "nodejs"; // ensures Node.js environment for fs and logging
 
-const uploadDir = path.join(process.cwd(), "public/uploads");
+// ✅ FIX: point explicitly to the admin-panel's public/uploads folder
+const uploadDir = path.join(process.cwd(), "Portfolio/admin-panel/public/uploads");
 
 // Ensure directory exists
 if (!fs.existsSync(uploadDir)) {
@@ -29,10 +30,11 @@ export async function POST(req: NextRequest) {
         const filePath = path.join(uploadDir, fileName);
 
         fs.writeFileSync(filePath, buffer);
-        
-        console.log("Saving file to:", path.join(process.cwd(), "public", "uploads", fileName));
 
-        const url = `/uploads/${fileName}`; // static public URL
+        console.log("Saving file to:", filePath);
+
+        // ✅ Return static public URL
+        const url = `/uploads/${fileName}`;
         return NextResponse.json({ success: true, url }, { status: 201 });
     } catch (err) {
         console.error(err);
