@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  // ✅ Disable lint & type errors during production build
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -10,21 +9,19 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // ✅ Keep your image rewrite for uploaded files
   async rewrites() {
     return [
       {
-        source: "/api/uploads/:path*", // public access path
-        destination: "/Portfolio/shared/uploads/:path*", // actual local folder
+        source: "/uploads/:path*", // ✅ make it simpler (not /api/uploads)
+        destination: "/Portfolio/admin-panel/public/uploads/:path*", // ✅ actual location
       },
     ];
   },
 
-  // ✅ Keep alias config (unchanged)
   webpack: (config) => {
     config.resolve.alias["@uploads"] = path.resolve(
       process.cwd(),
-      "../shared/uploads"
+      "public/uploads"
     );
     return config;
   },
