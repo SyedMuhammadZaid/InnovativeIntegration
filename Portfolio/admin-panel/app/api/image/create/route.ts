@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
         fs.writeFileSync(filePath, buffer);
 
         const url = `/uploads/${fileName}`; // static public URL
+        console.log("Saving file to:", path.join(process.cwd(), "public", "uploads", fileName));
         return NextResponse.json({ success: true, url }, { status: 201 });
     } catch (err) {
         console.error(err);
