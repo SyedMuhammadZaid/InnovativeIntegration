@@ -5,7 +5,7 @@ import path from "path";
 export const runtime = "nodejs"; // ensures Node.js environment for fs and logging
 
 // ✅ FIX: point explicitly to the admin-panel's public/uploads folder
-const uploadDir = path.join(process.cwd(), "Portfolio/admin-panel/public/uploads");
+const uploadDir = path.join(process.cwd(), "public/uploads");
 
 // Ensure directory exists
 if (!fs.existsSync(uploadDir)) {
