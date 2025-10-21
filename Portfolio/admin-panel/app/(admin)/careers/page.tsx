@@ -7,6 +7,7 @@ import moment from 'moment';
 import React, { useEffect, useMemo, useState } from 'react'
 import CareerModal from './careerModal'
 import { ActionType } from '@/Utils/constants';
+import { useRouter } from 'next/navigation';
 
 const Careers = () => {
 
@@ -16,6 +17,7 @@ const Careers = () => {
   const [openCareerModal, setOpenCareerModal] = useState(false);
   const [modalState, setModalState] = useState('');
   const [isRefresh, setIsRefresh] = useState(false);
+  const router = useRouter();
 
 
   const columns: TableColumnsType<any> = useMemo(() => (
@@ -94,6 +96,11 @@ const Careers = () => {
     }, 0);
   }
 
+  const backHandler = () => {
+    router.push('/home')
+  }
+
+
   return (
     <Row gutter={[16, 22]} className=''>
       <Col span={24}>
@@ -101,6 +108,7 @@ const Careers = () => {
           heading='Careers'
           btnText='Create Job'
           btnClickHandler={jobCreateBtnHandler}
+          backHandler={backHandler}
         />
       </Col>
       <Col span={24}>

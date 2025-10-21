@@ -92,6 +92,11 @@ const Blogs = () => {
         router.push(`/blogs/${record.id}`)
     }
 
+    const backHandler = () => {
+        router.push('/home')
+    }
+
+
     return (
         <Row gutter={[16, 22]} className=''>
             <Col span={24}>
@@ -99,6 +104,7 @@ const Blogs = () => {
                     heading='Blogs'
                     btnText='Create Blog'
                     btnClickHandler={blogCreateBtnHandler}
+                    backHandler={backHandler}
                 />
             </Col>
             <Col span={24}>

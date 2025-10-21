@@ -105,6 +105,11 @@ const ProjectsListing = ({ params }: { params: { id: string } }) => {
         router.push(`/sub-projects/projects/${id}/update/${record.id}`)
     }
 
+
+    const backHandler = () => {
+        router.push('/sub-projects')
+    }
+
     return (
         <Row gutter={[16, 22]} className=''>
             <Col span={24}>
@@ -112,6 +117,7 @@ const ProjectsListing = ({ params }: { params: { id: string } }) => {
                     heading='Projects'
                     btnText='Create Project'
                     btnClickHandler={projectCreateBtnHandler}
+                    backHandler={backHandler}
                 />
             </Col>
 

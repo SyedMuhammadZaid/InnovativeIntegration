@@ -119,6 +119,9 @@ const Projects = () => {
         router.push(`sub-projects/projects/${record?.id}`)
     }
 
+    const backHandler = () => {
+        router.push('/home')
+    }
 
     return (
         <Row gutter={[16, 22]} className=''>
@@ -127,6 +130,7 @@ const Projects = () => {
                     heading='Sub Projects'
                     btnText='Create Sub Project'
                     btnClickHandler={subProjectCreateBtnHandler}
+                    backHandler={backHandler}
                 />
             </Col>
 
