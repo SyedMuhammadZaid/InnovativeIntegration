@@ -109,6 +109,10 @@ const CaseStudies = () => {
     router.push(`/casestudies/${record.id}`)
   }
 
+  const backHandler = () => {
+    router.push('/home')
+  }
+
 
   return (
     <Row gutter={[16, 22]} className=''>
@@ -117,6 +121,7 @@ const CaseStudies = () => {
           heading='Case Studies'
           btnText='Create Case Study'
           btnClickHandler={caseStudyCreateBtnHandler}
+          backHandler={backHandler}
         />
       </Col>
       <Col span={24}>

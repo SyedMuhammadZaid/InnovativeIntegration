@@ -153,6 +153,10 @@ const Events = () => {
         }, 0);
     }
 
+    const backHandler = () => {
+        router.push('/home')
+    }
+
     return (
         <Row gutter={[16, 22]} className=''>
             <Col span={24}>
@@ -160,6 +164,7 @@ const Events = () => {
                     heading='Events'
                     btnText='Create Event'
                     btnClickHandler={eventCreateBtnHandler}
+                    backHandler={backHandler}
                 />
             </Col>
             <Col span={24}>
