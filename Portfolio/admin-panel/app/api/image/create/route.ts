@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
         console.log("Saving file to:", filePath);
 
         // ✅ Return static public URL
-        const url = `/uploads/${fileName}`;
+        const url = `/api/uploads/${fileName}`;
         return NextResponse.json({ success: true, url }, { status: 201 });
     } catch (err) {
         console.error(err);
