@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 import path from "path";
 
+// Disable Turbopack to ensure stable builds on Railway
+export const experimental = {
+  turbo: false,
+};
+  
+
 const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
