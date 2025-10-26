@@ -1,26 +1,206 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: #003173;
+  --secondary-color: #55CEE3;
+  --primary-linear-gradient-color: transparent linear-gradient(90deg, #003173 1%, #55CEE3 99%) 0% 0% no-repeat padding-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.container {
+  padding: 0px 20px;
+  max-width: 85%;
+  margin: 0px auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.primary-linear-gradient {
+  background: var(--primary-linear-gradient-color);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.primary-text-color {
+  color: var(--primary-color);
+}
+
+.secondary-text-color {
+  color: var(--secondary-color);
+}
+
+/* section first heading part */
+.section-first-heading {
+  font-size: 2rem;
+  color: #010535;
+  letter-spacing: 0px;
+  font-weight: bold;
+}
+
+/* section second heading part   */
+.section-second-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--primary-linear-gradient-color);
+  /* ✅ Standard syntax */
+  background-clip: text;
+  /* ✅ Safari / Chrome support */
+  -webkit-background-clip: text;
+  /* ✅ Make the text reveal the gradient */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* description overall */
+.section-description {
+  color: #010535;
+  font-size: 0.9rem;
+}
+
+/* short about section at the top */
+.about-section {
+  color: #010535;
+  font-size: 1rem;
+  letter-spacing: 3.2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.smooth-scaling-icon {
+  transition: transform 0.3s ease-in-out !important;
+}
+
+.smooth-scaling-icon:hover {
+  transform: scale(1.19) !important;
+}
+
+.smooth-scaling-text {
+  transition: all 0.2s ease-in-out !important;
+}
+
+.smooth-scaling-text:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Button Normal state */
+.ant-btn.ant-btn-variant-solid.ant-btn-primary.primary-btn {
+  padding: 20px !important;
+  border-radius: 25px;
+  background: var(--primary-linear-gradient-color) !important;
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  border: none !important;
+  box-shadow: none !important;
+  transition: all 1s ease-in-out;
+}
+
+/* Button Hover state */
+.ant-btn.ant-btn-variant-solid.ant-btn-primary.primary-btn:hover {
+  background: transparent linear-gradient(90deg, #54CDE2E5 10%, #003173E5 100%) 0% 0% no-repeat padding-box !important;
+}
+
+
+/* header */
+header {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+/* footer */
+footer {
+  background: url('../assets/images/footerBg.png');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+
+/* home */
+/* partners collection section ======= */
+.partners-collection .ant-tabs-tab-btn {
+  display: flex;
+  align-items: center;
+}
+
+.partners-collection .ant-tabs-nav-list {
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab+.ant-tabs-tab {
+  margin: 0px !important;
+}
+
+.partners-collection .ant-tabs-tab-btn {
+  padding: 4px !important;
+  transition: transform 0.8s ease-in-out;
+  font-size: 1rem;
+}
+
+.partners-collection .ant-tabs-tab-btn:hover {
+  transform: scale(1.08);
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* in case of hover */
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Private Cloud"]:hover {
+  color: #FBBD01 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Cyber Security"]:hover {
+  color: #E9012D !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Network & Security"]:hover {
+  color: #00B050 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Application Delivery & Monitoring"]:hover {
+  color: #2D88CA !important;
+}
+
+/* in case of active tab item */
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Private Cloud"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #FBBD01 !important;
+  text-decoration: none;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Cyber Security"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #E9012D !important;
+  text-decoration: none;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Network & Security"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #00B050 !important;
+  text-decoration: none;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Application Delivery & Monitoring"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #2D88CA !important;
+  text-decoration: none;
+}
+
+/* custom css for underline bar */
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Private Cloud"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #FBBD01 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Cyber Security"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #E9012D !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Network & Security"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #00B050 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Application Delivery & Monitoring"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #2D88CA !important;
+}
+
+/* general for all partners and customers item to scale up */
+.collection-item {
+  transition: transform 0.8s ease-in-out;
+  cursor: pointer;
+}
+
+.collection-item:hover {
+  transform: scale(1.1);
 }
