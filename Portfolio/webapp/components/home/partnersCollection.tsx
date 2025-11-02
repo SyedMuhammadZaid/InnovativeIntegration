@@ -32,10 +32,10 @@ const privateCloudItems = [
         id: 1,
         image: cohesity
     },
-    // {
-    //     id: 2,
-    //     image: netapp
-    // },
+    {
+        id: 2,
+        image: netapp
+    },
     {
         id: 3,
         image: vmware
@@ -87,10 +87,10 @@ const networkSecurityItems = [
         id: 5,
         image: paloalto
     },
-    // {
-    //     id: 6,
-    //     image: riverbad
-    // }
+    {
+        id: 6,
+        image: riverbad
+    }
 ]
 
 const applicationDeliveryMonitoringItems = [

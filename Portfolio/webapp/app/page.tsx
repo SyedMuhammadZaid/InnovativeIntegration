@@ -1,11 +1,11 @@
 import CustomersAndPartnersSection from "@/components/home/customersAndPartnersSection";
+import HeroSection from "@/components/home/heroSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-start gap-7 min-h-screen">
-      {/* video hero section */}
-      <h1 className="border">hero section</h1>
+    <section className="flex flex-col justify-start min-h-screen">
+      <HeroSection />
       <CustomersAndPartnersSection />
-    </div>
+    </section>
   );
 }

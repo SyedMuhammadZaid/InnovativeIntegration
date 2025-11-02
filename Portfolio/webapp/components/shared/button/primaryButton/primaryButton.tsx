@@ -3,7 +3,7 @@ import { Button } from 'antd';
 
 interface PrimaryButtonInterface {
     text: string,
-    className: string,
+    className?: string,
     onClick: () => void;
     icon?: React.ReactNode
 }

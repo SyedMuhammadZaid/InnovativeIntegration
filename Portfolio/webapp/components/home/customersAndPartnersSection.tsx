@@ -35,7 +35,7 @@ const CustomersAndPartnersSection = () => {
                 <section className='flex items-center justify-center flex-col gap-7'>
                     <Radio.Group value={radioValue} defaultValue="Partner" className='flex! flex-nowrap md:flex-wrap gap-1' onChange={radioSelectionHandler}>
                         <Radio value="Partner" className='border border-[#d6d3d3] rounded-md md:px-8! px-3! font-semibold py-3! flex! items-center bg-white'>Partner Alliances</Radio>
-                        <Radio value="Customer" className='border border-[#d6d3d3] rounded-md md:px-8! px-3! font-semibold py-3! flex! items-center! bg-white'>Customer</Radio>
+                        <Radio value="Customer" className='border border-[#d6d3d3] rounded-md md:px-8! px-3! font-semibold py-3! flex! items-center! bg-white'>Customers</Radio>
                     </Radio.Group>
                     <AnimatePresence mode="wait">
                         <motion.div
