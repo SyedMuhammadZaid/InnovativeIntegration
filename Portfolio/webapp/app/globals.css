@@ -54,9 +54,9 @@
 
 /* short about section at the top */
 .about-section {
-  color: #010535;
+  color: #010535a9;
   font-size: 1rem;
-  letter-spacing: 3.2px;
+  letter-spacing: 2px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -240,6 +240,64 @@ footer {
   background-color: #2D88CA !important;
 }
 
+
+/* for customers */
+
+/* in case of hover */
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Banking & Finance"]:hover {
+  color: #FBBD01 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Energy, Oil & Gas"]:hover {
+  color: #E9012D !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Telecommunication"]:hover {
+  color: #00B050 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Transportation And Logistics"]:hover {
+  color: #2D88CA !important;
+}
+
+/* in case of active tab item */
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Banking & Finance"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #FBBD01 !important;
+  text-decoration: none;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Energy, Oil & Gas"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #E9012D !important;
+  text-decoration: none;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Telecommunication"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #00B050 !important;
+  text-decoration: none;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Transportation And Logistics"].ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #2D88CA !important;
+  text-decoration: none;
+}
+
+/* custom css for underline bar */
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Banking & Finance"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #FBBD01 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Energy, Oil & Gas"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #E9012D !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Telecommunication"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #00B050 !important;
+}
+
+.partners-collection .ant-tabs .ant-tabs-tab[data-node-key="Transportation And Logistics"].ant-tabs-tab-active~.ant-tabs-ink-bar {
+  background-color: #2D88CA !important;
+}
+
 /* general for all partners and customers item to scale up */
 .collection-item {
   transition: transform 0.8s ease-in-out;
@@ -248,4 +306,51 @@ footer {
 
 .collection-item:hover {
   transform: scale(1.1);
+}
+
+.services-section {
+  background: url('../assets/images/servicesBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.services-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  /* adjust darkness */
+  z-index: 0.3;
+}
+
+.ant-collapse-item {
+  background-color: white !important;
+  margin-bottom: 10px !important;
+  border-radius: 12px !important;
+}
+
+.ant-collapse-content-box {
+  background: var(--primary-linear-gradient-color) !important;
+  color: white !important;
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
+
+.ant-collapse-content-box p {
+  color: white !important;
+  font-size: 0.9rem !important;
+}
+
+.blogcard-layer {
+  background: linear-gradient(0deg, #003173 10%, #55CEE3 90%) no-repeat padding-box;
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding: 0px 10px;
+    max-width: 95%;
+    margin: 0px auto;
+  }
 }

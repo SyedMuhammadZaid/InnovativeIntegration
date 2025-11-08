@@ -13,6 +13,11 @@ interface UpdateBlogPost {
     description?: any
 }
 
+interface BlogQueryParams {
+    limit?: number;
+    offset?: number;
+}
+
 // for creating blog
 export const createBlog = async (data: CreateBlogPost) => {
     return await prisma.blog.create({
@@ -43,11 +48,15 @@ export const deleteBlog = async (id: number) => {
 }
 
 // for getting all blogs
-export const getAllBlogs = async () => {
+export const getAllBlogs = async (params?: BlogQueryParams) => {
+    const limit = params?.limit ?? undefined; // if not passed, Prisma fetches all
+    const offset = params?.offset ?? 0;       // default skip is 0
     return await prisma.blog.findMany({
         orderBy: {
             createdAt: "desc"
-        }
+        },
+        skip: offset || 0,
+        take: limit
     });
 }
 

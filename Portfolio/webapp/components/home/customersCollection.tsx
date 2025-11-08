@@ -21,94 +21,113 @@ import riverbad from "@/assets/images/partners/network&Security/riverbad.png"
 import appDynamics from "@/assets/images/partners/ApplicationDelivery&Monitoring/appDynamics.png"
 import datadog from "@/assets/images/partners/ApplicationDelivery&Monitoring/datadog.png"
 import logrhythm from "@/assets/images/partners/ApplicationDelivery&Monitoring/logrhythm.png"
+
+import alfalah from "@/assets/images/customers/bank/Alfalah.png"
+import hbl from "@/assets/images/customers/bank/hbl.png"
+import meezan from "@/assets/images/customers/bank/Alfalah.png"
+import oneLink from "@/assets/images/customers/bank/oneLink.png"
+import standard from "@/assets/images/customers/bank/standard.jpg"
+import ubl from "@/assets/images/customers/bank/ubl.png"
+import KE from "@/assets/images/customers/oil/KE.png"
+import parco from "@/assets/images/customers/oil/parco.png"
+import pso from "@/assets/images/customers/oil/pso.png"
+import SSGC from "@/assets/images/customers/oil/SSGC.png"
+import jazz from "@/assets/images/customers/telecommunication/jazz.png"
+import mobilink from "@/assets/images/customers/telecommunication/mobilink.png"
+import telenor from "@/assets/images/customers/telecommunication/telenor.png"
+import zong from "@/assets/images/customers/telecommunication/zong.png"
+import dp from "@/assets/images/customers/logistics/dp.png"
+import kict from "@/assets/images/customers/logistics/kict.png"
+import south from "@/assets/images/customers/logistics/south.png"
+import tcs from "@/assets/images/customers/logistics/tcs.png"
+
 import Image from 'next/image';
 import { AnimatePresence } from 'motion/react';
 import Link from 'next/link';
 import PrimaryButton from '../shared/button/primaryButton/primaryButton';
 
 
-const privateCloudItems = [
+const bankItems = [
     {
         id: 1,
-        image: cohesity
+        image: alfalah
     },
     {
         id: 2,
-        image: netapp
+        image: hbl
     },
     {
         id: 3,
-        image: vmware
+        image: meezan
     },
     {
         id: 4,
-        image: trilio
-    },
-
-]
-
-const cyberSecurityItems = [
-    {
-        id: 1,
-        image: fortinet
-    },
-    {
-        id: 2,
-        image: netscout
-    },
-    {
-        id: 3,
-        image: paloalto
-    },
-    // {
-    //     id: 4,
-    //     image: recordedFuture
-    // }
-]
-
-const networkSecurityItems = [
-    // {
-    //     id: 1,
-    //     image: cisco
-    // },
-    // {
-    //     id: 2,
-    //     image: f5
-    // },
-    {
-        id: 3,
-        image: forescout
-    },
-    {
-        id: 4,
-        image: netscout
+        image: oneLink
     },
     {
         id: 5,
-        image: paloalto
-    },
+        image: standard
+    }, 
     {
         id: 6,
-        image: riverbad
-    }
+        image: ubl
+    },
 ]
 
-const applicationDeliveryMonitoringItems = [
+const oilItems = [
     {
         id: 1,
-        image: appDynamics
+        image: KE
     },
     {
         id: 2,
-        image: datadog
+        image: parco
+    },
+    {
+        id: 3,
+        image: pso
+    },
+    {
+        id: 4,
+        image: SSGC
+    }
+]
+
+const telecommunicationItems = [
+    {
+        id: 1,
+        image: jazz
+    },
+    {
+        id: 2,
+        image: mobilink
+    },
+    {
+        id: 3,
+        image: telenor
+    },
+    {
+        id: 4,
+        image: zong
+    }
+]
+
+const logistics = [
+    {
+        id: 1,
+        image: dp
+    },
+    {
+        id: 2,
+        image: kict
     },
     // {
     //     id: 3,
-    //     image: f5
+    //     image: south
     // },
     {
         id: 4,
-        image: logrhythm
+        image: tcs
     },
 ]
 
@@ -116,52 +135,52 @@ const tabItems = [
     {
         key: 'Banking & Finance',
         label: 'Banking & Finance',
-        children: privateCloudItems,
+        children: bankItems,
         icon: <FaCloudDownloadAlt color='#FBBD01' />,
         color: '#FBBD01'
     },
     {
         key: 'Energy, Oil & Gas',
         label: 'Energy, Oil & Gas',
-        children: cyberSecurityItems,
+        children: oilItems,
         icon: <MdSecurity color='#E9012D' />,
         color: '#E9012D'
     },
+    // {
+    //     key: 'Pharmacia ,Health & Education',
+    //     label: 'Pharmacia ,Health & Education',
+    //     children: networkSecurityItems,
+    //     icon: <BiNetworkChart color='#00B050' />,
+    //     color: '#00B050'
+    // },
     {
-        key: 'Pharmacia ,Health & Education',
-        label: 'Pharmacia ,Health & Education',
-        children: networkSecurityItems,
-        icon: <BiNetworkChart color='#00B050' />,
-        color: '#00B050'
+        key: 'Telecommunication',
+        label: 'Telecommunication',
+        children: telecommunicationItems,
+        icon: <MdScreenshotMonitor color='#2D88CA' />,
+        color: '#2D88CA'
     },
     {
         key: 'Transportation And Logistics',
         label: 'Transportation And Logistics',
-        children: applicationDeliveryMonitoringItems,
+        children: logistics,
         icon: <MdScreenshotMonitor color='#2D88CA' />,
         color: '#2D88CA'
     },
-    {
-        key: 'Information Technology',
-        label: 'Information Technology',
-        children: networkSecurityItems,
-        icon: <BiNetworkChart color='#00B050' />,
-        color: '#00B050'
-    },
-    {
-        key: 'Telecommunication',
-        label: 'Telecommunication',
-        children: applicationDeliveryMonitoringItems,
-        icon: <MdScreenshotMonitor color='#2D88CA' />,
-        color: '#2D88CA'
-    },
-    {
-        key: 'Others',
-        label: 'Others',
-        children: applicationDeliveryMonitoringItems,
-        icon: <MdScreenshotMonitor color='#2D88CA' />,
-        color: '#2D88CA'
-    },
+    // {
+    //     key: 'Information Technology',
+    //     label: 'Information Technology',
+    //     children: networkSecurityItems,
+    //     icon: <BiNetworkChart color='#00B050' />,
+    //     color: '#00B050'
+    // },
+    // {
+    //     key: 'Others',
+    //     label: 'Others',
+    //     children: applicationDeliveryMonitoringItems,
+    //     icon: <MdScreenshotMonitor color='#2D88CA' />,
+    //     color: '#2D88CA'
+    // },
 ]
 
 const variants = {
@@ -171,7 +190,7 @@ const variants = {
 
 const CustomersCollection = () => {
 
-    const [activeKey, setActiveKey] = useState("Private Cloud")
+    const [activeKey, setActiveKey] = useState("Banking & Finance")
 
     return (
         <div className='partners-collection'>
