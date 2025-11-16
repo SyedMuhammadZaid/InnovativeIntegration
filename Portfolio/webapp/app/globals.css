@@ -24,6 +24,17 @@
   color: var(--secondary-color);
 }
 
+.text-linear-gradient {
+  background: var(--primary-linear-gradient-color);
+  /* ✅ Standard syntax */
+  background-clip: text;
+  /* ✅ Safari / Chrome support */
+  -webkit-background-clip: text;
+  /* ✅ Make the text reveal the gradient */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
 /* section first heading part */
 .section-first-heading {
   font-size: 2rem;
@@ -114,6 +125,12 @@ footer {
   background: url('../assets/images/footerBg.png');
   background-repeat: no-repeat;
   background-position: top;
+  background-size: cover;
+}
+
+.banner-bg {
+  background-image: url('../assets/images/bannerImg.png');
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -345,6 +362,32 @@ footer {
 
 .blogcard-layer {
   background: linear-gradient(0deg, #003173 10%, #55CEE3 90%) no-repeat padding-box;
+}
+
+
+/* services */
+.service-icon {
+  color: var(--primary-color) !important;
+}
+
+.service-card {
+  background-color: #fff;
+  transition: background 0.8s ease-in-out, color 0.6s ease-in-out, transform 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+}
+
+.service-card:hover {
+  background: transparent linear-gradient(91deg, #003173 0%, #55CEE3 100%) 0% 0% no-repeat padding-box;
+}
+
+.service-tab-listing-item {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* events */
+.events-card-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 800px) {

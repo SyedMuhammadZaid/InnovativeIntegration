@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image'
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import Logo from '@/assets/images/logo.png'
 import PrimaryButton from '../button/primaryButton/primaryButton';
 import { IoIosArrowDroprightCircle } from "react-icons/io";
@@ -9,69 +9,78 @@ import { FaChevronDown } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import DrawerNav from './drawerNav';
 import Link from 'next/link';
-
-const navItems = [
-    {
-        id: 1,
-        title: "About Us",
-        link: "/",
-        isDropDown: false
-    },
-    {
-        id: 2,
-        title: "Services",
-        link: "/",
-        isDropDown: false
-    },
-    {
-        id: 3,
-        title: "Resources",
-        link: "/",
-        isDropDown: true,
-        dropdownValues: [
-            {
-                key: '1',
-                icon: <IoIosArrowDroprightCircle />,
-                label: "Case Study",
-                link: "/"
-            },
-            {
-                key: '2',
-                icon: <IoIosArrowDroprightCircle />,
-                label: "Events",
-                link: "/"
-            },
-            {
-                key: '3',
-                icon: <IoIosArrowDroprightCircle />,
-                label: "Blogs",
-                link: "/"
-            },
-        ]
-    },
-    {
-        id: 4,
-        title: "Customers",
-        link: "/",
-        isDropDown: false
-    },
-    {
-        id: 5,
-        title: "Our Partners",
-        link: "/",
-        isDropDown: false
-    },
-    {
-        id: 6,
-        title: "Support Portal",
-        link: "/",
-        isDropDown: false
-    },
-]
+import { useRouter } from 'next/navigation';
 
 const BottomHeader = () => {
 
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const router = useRouter();
+
+    const dropdownValuesNavigator = useCallback((link: string) => (
+        router.push(link)
+    ), [])
+
+    const navItems = useMemo(() => (
+        [
+            {
+                id: 1,
+                title: "About Us",
+                link: "/",
+                isDropDown: false
+            },
+            {
+                id: 2,
+                title: "Services",
+                link: "/services",
+                isDropDown: false
+            },
+            {
+                id: 3,
+                title: "Resources",
+                link: "/",
+                isDropDown: true,
+                dropdownValues: [
+                    {
+                        key: '1',
+                        icon: <IoIosArrowDroprightCircle />,
+                        label: "Case Study",
+                        onClick: () => dropdownValuesNavigator('/caseStudies')
+                    },
+                    {
+                        key: '2',
+                        icon: <IoIosArrowDroprightCircle />,
+                        label: "Events",
+                        onClick: () => dropdownValuesNavigator('/events')
+                    },
+                    {
+                        key: '3',
+                        icon: <IoIosArrowDroprightCircle />,
+                        label: "Blogs",
+                        onClick: () => dropdownValuesNavigator('/blogs')
+                    },
+                ]
+            },
+            {
+                id: 4,
+                title: "Customers",
+                link: "/",
+                isDropDown: false
+            },
+            {
+                id: 5,
+                title: "Our Partners",
+                link: "/",
+                isDropDown: false
+            },
+            {
+                id: 6,
+                title: "Support Portal",
+                link: "/",
+                isDropDown: false
+            },
+        ]
+    ), [])
+
 
     const contactUsHandler = () => { }
 
@@ -95,6 +104,7 @@ const BottomHeader = () => {
                                         {
                                             navItem.isDropDown ?
                                                 <Dropdown
+                                                    trigger={["hover"]}
                                                     menu={{ items: navItem.dropdownValues }}>
                                                     <Link href={"/"} className='flex items-center gap-2'>
                                                         {navItem.title}
@@ -102,7 +112,9 @@ const BottomHeader = () => {
                                                     </Link>
                                                 </Dropdown>
                                                 :
-                                                navItem.title
+                                                <Link href={navItem?.link}>
+                                                    {navItem.title}
+                                                </Link>
                                         }
                                     </li>
                                 )

@@ -4,6 +4,7 @@ import "./globals.css";
 import TopHeader from "@/components/shared/header/topHeader";
 import BottomHeader from "@/components/shared/header/bottomHeader";
 import Footer from "@/components/shared/footer/footer";
+import { LoaderProvider } from "@/components/shared/loadingContext/loaderContext";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta-sans",
@@ -27,10 +28,12 @@ export default function RootLayout({
       <body
         className={`${jakartaSans.variable} antialiased`}
       >
-        <TopHeader />
-        <BottomHeader />
-        {children}
-        <Footer />
+        <LoaderProvider>
+          <TopHeader />
+          <BottomHeader />
+          {children}
+          <Footer />
+        </LoaderProvider>
       </body>
     </html>
   );

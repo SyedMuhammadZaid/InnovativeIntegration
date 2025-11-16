@@ -10,6 +10,7 @@ import project2 from "@/assets/images/project-2.png"
 import { FaArrowAltCircleRight } from "react-icons/fa"
 import PrimaryButton from "../shared/button/primaryButton/primaryButton"
 import { IoIosArrowDroprightCircle } from "react-icons/io"
+import { useLoader } from "../shared/loadingContext/loaderContext"
 
 const blogPosts = [
     {
@@ -41,16 +42,21 @@ const blogPosts = [
 export default function BlogSection() {
 
     const [blogs, SetBlogs] = useState<any[]>([]);
+    const { showLoader, hideLoader } = useLoader()
 
     useEffect(() => {
         (async () => {
             try {
-                let res: any = await getBlogs({ limit: 3, offset: 0 });
+                showLoader()
+                let res: any = await getBlogs({ limit: 4, offset: 0 });
                 if (res?.success) {
-                    SetBlogs(res?.data)
+                    SetBlogs(res?.data?.blogs)
                 }
             } catch (error) {
                 console.log(error)
+            }
+            finally {
+                hideLoader()
             }
         })()
     }, [])
@@ -73,7 +79,7 @@ export default function BlogSection() {
                     </div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 items-center">
                     {
                         blogs?.length > 0
                             ?
@@ -85,7 +91,7 @@ export default function BlogSection() {
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
                                     whileHover={{ y: -10 }}
-                                    className="mx-auto"
+                                    className="mx-auto cursor-pointer"
                                 >
                                     <div className="relative w-[250px] h-[300px]">
                                         <div className="absolute top-0 left-0 w-full h-full z-10">
@@ -102,7 +108,7 @@ export default function BlogSection() {
                                 </motion.div>
                             ))
                             :
-                            <p>No Blogs Available</p>
+                            <p className="text-center">No Blogs Available</p>
                     }
                 </div>
 
@@ -112,7 +118,7 @@ export default function BlogSection() {
                     viewport={{ once: true }}
                     className="text-center mt-4"
                 >
-                    <PrimaryButton                  
+                    <PrimaryButton
                         text='View All'
                         className='primary-btn hidden! lg:inline-flex! w-fit'
                         onClick={() => ''}
