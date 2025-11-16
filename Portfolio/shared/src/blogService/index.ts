@@ -51,13 +51,18 @@ export const deleteBlog = async (id: number) => {
 export const getAllBlogs = async (params?: BlogQueryParams) => {
     const limit = params?.limit ?? undefined; // if not passed, Prisma fetches all
     const offset = params?.offset ?? 0;       // default skip is 0
-    return await prisma.blog.findMany({
+    const count = await prisma.blog.count();
+    const blogs = await prisma.blog.findMany({
         orderBy: {
             createdAt: "desc"
         },
         skip: offset || 0,
-        take: limit
+        take: limit,
     });
+    return {
+        count,
+        blogs,
+    };
 }
 
 // to get a single blog

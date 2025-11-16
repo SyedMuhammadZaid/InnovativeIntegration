@@ -69,7 +69,7 @@ const Blogs = () => {
                 setLoading(true)
                 let res: any = await apiClient.get(`/blog/getAllBlogs`);
                 if (res?.success) {
-                    setBlogRecords(res.data)
+                    setBlogRecords(res?.data?.blogs)
                 }
             } catch (error) {
                 console.log(error)

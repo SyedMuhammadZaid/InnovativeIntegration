@@ -115,7 +115,7 @@ const Events = () => {
                 setLoading(true)
                 let res: any = await apiClient.get(`/event/getAllEvents`);
                 if (res?.success) {
-                    setEventRecords(res.data)
+                    setEventRecords(res.data?.events)
                 }
             } catch (error) {
                 console.log(error)

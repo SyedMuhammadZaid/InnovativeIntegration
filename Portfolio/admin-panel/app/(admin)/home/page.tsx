@@ -117,10 +117,10 @@ export default function Home() {
                 for (let item of updatedRecords) {
                     switch (item.title) {
                         case 'Events':
-                            item.count = events?.data?.length
+                            item.count = events?.data?.events?.length
                             break;
                         case 'Blogs':
-                            item.count = blogs?.data?.length
+                            item.count = blogs?.data?.blogs?.length
                             break;
                         case 'Careers':
                             item.count = careers?.data?.length
