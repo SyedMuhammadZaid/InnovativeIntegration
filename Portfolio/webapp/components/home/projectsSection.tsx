@@ -7,6 +7,7 @@ import project3 from "@/assets/images/project-3.png"
 import project4 from "@/assets/images/project-4.png"
 import project5 from "@/assets/images/project-5.png"
 import Image from "next/image"
+import Link from "next/link"
 // import project2 from "@/assets/images/project-2.png"
 
 const projects = [
@@ -15,36 +16,42 @@ const projects = [
         category: "Cybersecurity",
         image: project1,
         gradient: "from-blue-600 to-cyan-500",
+        id: 1
     },
     {
         title: "Backup & Network Projects",
         category: "Backup",
         image: project2,
         gradient: "from-purple-600 to-pink-500",
+        id: 2
     },
     {
         title: "Enterprise Storage Projects",
         category: "Storage",
         image: project3,
         gradient: "from-cyan-600 to-blue-500",
+        id: 3
     },
     {
         title: "Datacenter Projects",
         category: "Datacenter",
         image: project4,
         gradient: "from-pink-600 to-purple-500",
+        id: 4
     },
     {
         title: "Traffic Load Balancing Projects",
         category: "Traffic Load",
         image: project5,
         gradient: "from-cyan-600 to-blue-500",
+        id: 5
     },
     {
         title: "Server Load Balancing Projects",
         category: "Server Load",
         image: project2,
         gradient: "from-pink-600 to-purple-500",
+        id: 6
     },
 ]
 
@@ -77,20 +84,22 @@ export default function ProjectsSection() {
                             transition={{ delay: index * 0.1 }}
                             className="group cursor-pointer mb-3"
                         >
-                            <div className={`relative overflow-hidden ${index == 0 ? 'md:rounded-tl-2xl md:rounded-bl-2xl' : projects.length - 1 == index ? 'md:rounded-tr-2xl md:rounded-br-2xl' : ''} shadow-xl`}>
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-80 object-cover transition-transform duration-500"
-                                />
-                                <div
-                                    className={`absolute inset-0 bg-[#00000073] group-hover:bg-gradient-to-t ${project.gradient} opacity-60 group-hover:opacity-80 transition-opacity delay-500 duration-500 ease-in-out`}
-                                />
-                                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                    <span className="text-xs uppercase tracking-widest opacity-90 border border-white p-1 rounded-md">{project.category}</span>
-                                    <h3 className="text-base mt-2 text-balance tracking-normal">{project.title}</h3>
+                            <Link href={`/projects/sub-projects/${project.id}`}>
+                                <div className={`relative overflow-hidden ${index == 0 ? 'md:rounded-tl-2xl md:rounded-bl-2xl' : projects.length - 1 == index ? 'md:rounded-tr-2xl md:rounded-br-2xl' : ''} shadow-xl`}>
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-80 object-cover transition-transform duration-500"
+                                    />
+                                    <div
+                                        className={`absolute inset-0 bg-[#00000073] group-hover:bg-gradient-to-t ${project.gradient} opacity-60 group-hover:opacity-80 transition-opacity delay-500 duration-500 ease-in-out`}
+                                    />
+                                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                        <span className="text-xs uppercase tracking-widest opacity-90 border border-white p-1 rounded-md">{project.category}</span>
+                                        <h3 className="text-base mt-2 text-balance tracking-normal">{project.title}</h3>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>

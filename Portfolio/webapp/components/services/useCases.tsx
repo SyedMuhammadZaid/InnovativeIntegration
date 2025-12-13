@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { FiDollarSign, FiLayers, FiWifi } from "react-icons/fi"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-
+import useCase from "@/assets/images/useCases.png"
 const useCases = [
   {
     icon: FiDollarSign,
@@ -93,7 +93,7 @@ export default function UseCasesSection({ content }: { content: any }) {
           transition={{ duration: 0.6 }}
           className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl"
         >
-          <Image src="/professional-working-with-holographic-security-int.jpg" alt="Industry Use Cases" fill className="object-cover" />
+          <Image src={useCase} alt="Industry Use Cases" fill className="object-cover" />
         </motion.div>
       </div>
     </div>

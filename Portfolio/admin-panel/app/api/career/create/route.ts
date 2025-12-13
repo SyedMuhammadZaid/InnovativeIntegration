@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { title, tagline } = body;
+        const { title, tagline, description } = body;
         if (!title) {
             return NextResponse.json(
                 { error: "Missing required field" },
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
             );
         }
         const newCareer = await createCareerPost({
-            title, tagline
+            title, tagline, description
         });
         return NextResponse.json(
             { success: true, data: newCareer }, { status: 201 }

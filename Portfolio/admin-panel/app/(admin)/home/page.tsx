@@ -126,7 +126,7 @@ export default function Home() {
                             item.count = careers?.data?.length
                             break;
                         case 'Case Studies':
-                            item.count = caseStudies?.data?.length
+                            item.count = caseStudies?.data?.caseStudies?.length
                             break;
                         case 'Parent Projects':
                             item.count = 6

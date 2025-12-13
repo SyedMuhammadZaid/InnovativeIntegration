@@ -2,13 +2,15 @@ import prisma from "../prisma";
 
 interface CreateCareerPost {
     title: string
-    tagline?: string
+    tagline: string
+    description: string
 }
 
 interface UpdateCareerPost {
     id: number,
     title?: string
     tagline?: string
+    description?: string
 }
 
 // for creating a career post
@@ -16,7 +18,8 @@ export const createCareerPost = async (data: CreateCareerPost) => {
     return await prisma.career.create({
         data: {
             title: data.title,
-            tagline: data.tagline
+            tagline: data.tagline,
+            description: data.description
         }
     });
 }

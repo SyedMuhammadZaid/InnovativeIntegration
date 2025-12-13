@@ -20,7 +20,9 @@ export default function Home() {
       <ProjectsSection />
       <TestimonialsSection />
       <FaqSection />
-      <CtaSection title="Proactive Protection, Unwavering Support. Your Digital Security, Solved." />
+      <section className="bg-white py-20 px-4 md:px-8 lg:px-16">
+        <CtaSection title="Proactive Protection, Unwavering Support. Your Digital Security, Solved." />
+      </section>
       <BlogSection />
     </section>
   );

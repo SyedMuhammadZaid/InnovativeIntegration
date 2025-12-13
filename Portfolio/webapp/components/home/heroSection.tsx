@@ -4,13 +4,17 @@ import { motion, useInView } from "motion/react";
 import { MdOutlineSecurity } from "react-icons/md";
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import SecondaryButton from '../shared/button/secondaryButton/secondaryButton';
+import { useRouter } from 'next/navigation';
 
 const HeroSection = () => {
 
     const ref = React.useRef(null);
     const isInView = useInView(ref, { once: true });
+    const router = useRouter()
 
-    const learnMoreHandler = () => { }
+    const learnMoreHandler = () => {
+        router.push('/about')
+     }
 
     return (
         <section className="hero-section flex items-center justify-center">

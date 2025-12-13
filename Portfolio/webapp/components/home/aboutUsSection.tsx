@@ -9,8 +9,10 @@ import Image from "next/image"
 import SecondaryButton from "../shared/button/secondaryButton/secondaryButton"
 import { IoIosArrowDroprightCircle } from "react-icons/io"
 import PrimaryButton from "../shared/button/primaryButton/primaryButton"
+import { useRouter } from "next/navigation"
 
 export default function AboutUsSection() {
+    const router = useRouter();
     return (
         <section className="container relative bg-white py-12!">
             <div className="mx-auto px-3">
@@ -118,13 +120,13 @@ export default function AboutUsSection() {
                                     <div className="bg-red-500 rounded-full p-2 smooth-scaling-icon">
                                         <FiPhone className="text-white" />
                                     </div>
-                                    <span className="section-description">+92-42-35784491-94</span>
+                                    <span className="section-description">+92-21-32200013</span>
                                 </div>
 
                                 <PrimaryButton
                                     text='Contact Us'
                                     className='primary-btn hidden! lg:inline-flex!'
-                                    onClick={() => ''}
+                                    onClick={() => router.push('/contact')}
                                     icon={<IoIosArrowDroprightCircle size={18} className='mt-1' />}
                                 />
                             </div>

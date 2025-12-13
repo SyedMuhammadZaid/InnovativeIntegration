@@ -23,6 +23,11 @@ interface updateCaseStudy {
     advantage?: string
 }
 
+interface caseStudyQueryParams {
+    limit?: number
+    offset?: number
+}
+
 // for creating case study
 export const createCaseStudy = async (data: createCaseStudy) => {
     return await prisma.caseStudy.create({
@@ -58,12 +63,22 @@ export const deleteCaseStudy = async (id: number) => {
 }
 
 // for getting all case studies
-export const getAllCaseStudies = async () => {
-    return await prisma.caseStudy.findMany({
+export const getAllCaseStudies = async (params?: caseStudyQueryParams) => {
+
+    const limit = params?.limit ?? undefined;
+    const offset = params?.offset ?? 0;
+    const count = await prisma.caseStudy.count();
+    const caseStudies = await prisma.caseStudy.findMany({
         orderBy: {
             createdAt: 'desc'
-        }
+        },
+        skip: offset || 0,
+        take: limit
     });
+    return {
+        caseStudies,
+        count
+    }
 }
 
 // to get a single case study

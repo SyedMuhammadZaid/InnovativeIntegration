@@ -25,6 +25,15 @@ const testimonials = [
         logo: testimonial1,
         bgColor: "from-blue-700 to-blue-800",
     },
+    {
+        id: 3,
+        quote:
+            "Outstanding cybersecurity services! Their team provided comprehensive solutions that protected our entire infrastructure. The attention to detail and proactive approach exceeded our expectations.",
+        name: "James Mitchell",
+        position: "CTO, Tech Solutions Inc",
+        logo: testimonial1,
+        bgColor: "from-blue-700 to-blue-800",
+    },
 ]
 
 export default function TestimonialsSection() {

@@ -21,7 +21,7 @@ const DrawerNav = ({ open, onClose, children }: DrawerNavInterface) => {
                         <IoIosCloseCircle size={25} className='primary-text-color cursor-pointer' onClick={onClose} />
                     </section>
                     <section className='flex items-center gap-3 '>
-                        <Link href={'/'} className='smooth-scaling-text text-black!'>Careers</Link>
+                        <Link href={'/careers'} className='smooth-scaling-text text-black!'>Careers</Link>
                         <span> / </span>
                         <section className='flex items-center gap-2'>
                             <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon text-black!' />
@@ -33,6 +33,7 @@ const DrawerNav = ({ open, onClose, children }: DrawerNavInterface) => {
             closable={false}
             placement='top'
             open={open}
+            height={430}
         >
             {children}
         </Drawer>

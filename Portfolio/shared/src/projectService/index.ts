@@ -79,6 +79,12 @@ export const getAllProjectSubCategories = async () => {
     )
 }
 
+// for getting all projects sub categories (second layer) that lies under first layer.
+export const getAllSubCategoriesProjectsByFirstLayer = async (id: string) => {
+    return await prisma.projectSubCategory.findMany({
+        where: { mainCategoryId: { equals: id } }
+    })
+}
 
 // for creating a project
 export const createProject = async (data: CreateProject) => {

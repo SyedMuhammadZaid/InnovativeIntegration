@@ -13,9 +13,6 @@ import vmware from "@/assets/images/partners/privateCloud/vmware.png"
 import fortinet from "@/assets/images/partners/cyberSecurity/fortinet.png"
 import netscout from "@/assets/images/partners/cyberSecurity/netscout.png"
 import paloalto from "@/assets/images/partners/cyberSecurity/paloalto.png"
-import recordedFuture from "@/assets/images/partners/cyberSecurity/recordedFuture.png"
-import cisco from "@/assets/images/partners/network&Security/cisco.png"
-import f5 from "@/assets/images/partners/network&Security/f5.png"
 import forescout from "@/assets/images/partners/network&Security/forescout.png"
 import riverbad from "@/assets/images/partners/network&Security/riverbad.png"
 import appDynamics from "@/assets/images/partners/ApplicationDelivery&Monitoring/appDynamics.png"
@@ -23,8 +20,8 @@ import datadog from "@/assets/images/partners/ApplicationDelivery&Monitoring/dat
 import logrhythm from "@/assets/images/partners/ApplicationDelivery&Monitoring/logrhythm.png"
 import Image from 'next/image';
 import { AnimatePresence } from 'motion/react';
-import Link from 'next/link';
 import PrimaryButton from '../shared/button/primaryButton/primaryButton';
+import { useRouter } from 'next/navigation';
 
 
 const privateCloudItems = [
@@ -151,6 +148,7 @@ const variants = {
 const PartnersCollection = () => {
 
     const [activeKey, setActiveKey] = useState("Private Cloud")
+    const router = useRouter();
 
     return (
         <div className='partners-collection'>
@@ -188,9 +186,7 @@ const PartnersCollection = () => {
                                 ))}
                             </motion.div>
                             <p className='text-center mt-7'>
-                                <Link href={'/'}>
-                                    <PrimaryButton text='Show more' className='primary-btn py-1!' onClick={() => alert('')} />
-                                </Link>
+                                <PrimaryButton text='Show more' className='primary-btn py-1!' onClick={() => router.push('/partners')} />
                             </p>
                         </AnimatePresence>
                     ),

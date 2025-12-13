@@ -87,7 +87,7 @@ const CaseStudies = () => {
         setLoading(true)
         let res: any = await apiClient.get(`/casestudy/getAllCaseStudies`);
         if (res?.success) {
-          setCaseStudiesRecords(res.data)
+          setCaseStudiesRecords(res?.data?.caseStudies)
         }
       } catch (error) {
         console.log(error)

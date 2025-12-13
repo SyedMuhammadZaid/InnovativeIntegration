@@ -10,7 +10,7 @@ const TopHeader = () => {
             <section className='container flex items-center justify-between'>
                 <span className='text-white opacity-80 text-sm'>Cutting-Edge IT Systems Integrator</span>
                 <section className='flex items-center gap-3 text-white'>
-                    <Link href={'/'} className='smooth-scaling-text'>Careers</Link>
+                    <Link href={'/careers'} className='smooth-scaling-text'>Careers</Link>
                     <span> / </span>
                     <section className='flex items-center gap-2'>
                         <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon' />

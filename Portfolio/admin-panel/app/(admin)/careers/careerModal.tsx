@@ -40,6 +40,7 @@ const CareerModal = (
             form.setFieldsValue({
                 title: editData.title,
                 tagline: editData.tagline,
+                description: editData.description
             });
         }
     }, [editData, form]);
@@ -110,10 +111,15 @@ const CareerModal = (
                             </Form.Item>
                         </Col>
                         <Col span={24}>
+                            <Form.Item label="Tagline" name="tagline" rules={[{ required: true, message: 'Please input!' }]}>
+                                <Input />
+                            </Form.Item>
+                        </Col>
+                        <Col span={24}>
                             <Form.Item
                                 label="Description"
-                                name="tagline"
-                            // rules={[{ required: true, message: 'Please input!' }]}
+                                name="description"
+                                rules={[{ required: true, message: 'Please input!' }]}
                             >
                                 <Input.TextArea rows={5} />
                             </Form.Item>

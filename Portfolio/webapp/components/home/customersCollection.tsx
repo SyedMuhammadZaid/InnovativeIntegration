@@ -1,27 +1,10 @@
 'use client';
-import { Tabs, TabsProps } from 'antd'
+import { Tabs } from 'antd'
 import React, { useState } from 'react'
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { MdSecurity } from "react-icons/md";
-import { BiNetworkChart } from "react-icons/bi";
 import { MdScreenshotMonitor } from "react-icons/md";
 import * as motion from "motion/react-client";
-import cohesity from "@/assets/images/partners/privateCloud/cohesity.png"
-import netapp from "@/assets/images/partners/privateCloud/netapp.png"
-import trilio from "@/assets/images/partners/privateCloud/trilio.png"
-import vmware from "@/assets/images/partners/privateCloud/vmware.png"
-import fortinet from "@/assets/images/partners/cyberSecurity/fortinet.png"
-import netscout from "@/assets/images/partners/cyberSecurity/netscout.png"
-import paloalto from "@/assets/images/partners/cyberSecurity/paloalto.png"
-import recordedFuture from "@/assets/images/partners/cyberSecurity/recordedFuture.png"
-import cisco from "@/assets/images/partners/network&Security/cisco.png"
-import f5 from "@/assets/images/partners/network&Security/f5.png"
-import forescout from "@/assets/images/partners/network&Security/forescout.png"
-import riverbad from "@/assets/images/partners/network&Security/riverbad.png"
-import appDynamics from "@/assets/images/partners/ApplicationDelivery&Monitoring/appDynamics.png"
-import datadog from "@/assets/images/partners/ApplicationDelivery&Monitoring/datadog.png"
-import logrhythm from "@/assets/images/partners/ApplicationDelivery&Monitoring/logrhythm.png"
-
 import alfalah from "@/assets/images/customers/bank/Alfalah.png"
 import hbl from "@/assets/images/customers/bank/hbl.png"
 import meezan from "@/assets/images/customers/bank/Alfalah.png"
@@ -38,13 +21,12 @@ import telenor from "@/assets/images/customers/telecommunication/telenor.png"
 import zong from "@/assets/images/customers/telecommunication/zong.png"
 import dp from "@/assets/images/customers/logistics/dp.png"
 import kict from "@/assets/images/customers/logistics/kict.png"
-import south from "@/assets/images/customers/logistics/south.png"
 import tcs from "@/assets/images/customers/logistics/tcs.png"
 
 import Image from 'next/image';
 import { AnimatePresence } from 'motion/react';
-import Link from 'next/link';
 import PrimaryButton from '../shared/button/primaryButton/primaryButton';
+import { useRouter } from 'next/navigation';
 
 
 const bankItems = [
@@ -67,7 +49,7 @@ const bankItems = [
     {
         id: 5,
         image: standard
-    }, 
+    },
     {
         id: 6,
         image: ubl
@@ -191,6 +173,7 @@ const variants = {
 const CustomersCollection = () => {
 
     const [activeKey, setActiveKey] = useState("Banking & Finance")
+    const router = useRouter();
 
     return (
         <div className='partners-collection'>
@@ -228,9 +211,7 @@ const CustomersCollection = () => {
                                 ))}
                             </motion.div>
                             <p className='text-center mt-7'>
-                                <Link href={'/'}>
-                                    <PrimaryButton text='Show more' className='primary-btn py-1!' onClick={() => alert('')} />
-                                </Link>
+                                <PrimaryButton text='Show more' className='primary-btn py-1!' onClick={() => router.push('/customers')}/>
                             </p>
                         </AnimatePresence>
                     ),

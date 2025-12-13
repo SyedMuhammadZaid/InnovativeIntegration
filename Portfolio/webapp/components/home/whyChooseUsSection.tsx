@@ -6,10 +6,12 @@ import whyChooseUs from "@/assets/images/whyChooseUs.png"
 import Image from "next/image"
 import PrimaryButton from "../shared/button/primaryButton/primaryButton"
 import { IoIosArrowDroprightCircle } from "react-icons/io"
+import { useRouter } from "next/navigation"
 
 const benefits = ["Proactive Threat Defense", "Data Integrity & Protection", "24/7 Expert Partner Support"]
 
 export default function WhyChooseUsSection() {
+    const router = useRouter();
     return (
         <section className="bg-white container py-12!">
             <div className="w-full">
@@ -66,7 +68,7 @@ export default function WhyChooseUsSection() {
                         <PrimaryButton
                             text='More About'
                             className='primary-btn hidden! lg:inline-flex! w-fit'
-                            onClick={() => ''}
+                            onClick={() => router.push('/about')}
                             icon={<IoIosArrowDroprightCircle size={18} className='mt-1' />}
                         />
                     </motion.div>

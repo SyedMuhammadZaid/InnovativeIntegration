@@ -24,7 +24,7 @@ const services = [
         color: "from-cyan-500 to-blue-600",
         description: "We build and secure your digital backbone with enterprise-class network solutions, ensuring seamless connectivity and proactive defense against cyber threats.",
         image: service1,
-        link: "/"
+        link: "/services/serviceDetail/1"
     },
     {
         icon: FiMonitor,
@@ -32,7 +32,7 @@ const services = [
         color: "from-purple-500 to-pink-600",
         description: "Boost your business performance by optimizing application delivery. Our constant monitoring guarantees high availability, speed, and a flawless user experience.",
         image: service2,
-        link: "/"
+        link: "/services/serviceDetail/2"
     },
     {
         icon: FiLock,
@@ -40,7 +40,7 @@ const services = [
         color: "from-blue-500 to-cyan-600",
         description: "Safeguard your business with our comprehensive cybersecurity services. We provide proactive threat detection and expert breach response to secure your assets and reputation.        ",
         image: service3,
-        link: "/"
+        link: "/services/serviceDetail/3"
     },
     {
         icon: FiCloud,
@@ -48,7 +48,7 @@ const services = [
         color: "from-indigo-500 to-purple-600",
         description: "Gain ultimate control over your IT infrastructure with a tailored private cloud. We deliver a secure, scalable, and dedicated environment to drive your innovation.",
         image: service4,
-        link: "/"
+        link: "/services/serviceDetail/4"
     },
     {
         icon: FiSettings,
@@ -56,7 +56,7 @@ const services = [
         color: "from-cyan-500 to-teal-600",
         description: " Leverage our technical expertise to transform your IT landscape. We're your trusted partner for strategic consulting, seamless integration, and project success.",
         image: service5,
-        link: "/"
+        link: "/services/serviceDetail/5"
     },
 ]
 

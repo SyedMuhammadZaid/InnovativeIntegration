@@ -264,14 +264,14 @@ export default function Events() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <div className='flex flex-col justify-center items-start text-center flex-wrap '>
+                    <div className='flex flex-col justify-center md:items-start items-center text-center flex-wrap'>
                         <span className="about-section">EVENTS</span>
                         <h2 className='section-first-heading leading-9!'>
                             Explore Our Latest Events
                         </h2>
                     </div>
                 </motion.div>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,250px))] gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  mx-auto sm:mx-0 gap-6">
                     {
                         events.map((event, index) => {
                             if (event?.status !== 'CANCELLED') {
@@ -286,7 +286,7 @@ export default function Events() {
                                         className="cursor-pointer"
                                     >
                                         <Link href={`/events/${String(event?.id)}`}>
-                                            <div className="relative w-[250px] h-[300px]">
+                                            <div className="relative w-[300px] md:w-[250px] h-[300px]">
                                                 <div className="absolute top-0 left-0 w-full h-full z-10">
                                                     <Image src={project2 || `${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${event?.imageUrl}`} alt="eventImg" width={400} height={400} className="w-full h-full rounded-2xl" />
                                                 </div>

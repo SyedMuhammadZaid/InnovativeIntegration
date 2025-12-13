@@ -390,6 +390,24 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.contact-us-bg {
+  background: url('../assets/images/contactUsBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* about us */
+.company-history {
+  background: url('../assets/images/servicesBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.caseStudy-bg {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
 @media (max-width: 800px) {
   .container {
     padding: 0px 10px;

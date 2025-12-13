@@ -7,7 +7,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
         const { id } = params;
         let careerId = Number(id);
 
-        const { title, tagline } = body;
+        const { title, tagline, description } = body;
         if (!title) {
             return NextResponse.json(
                 { error: "Missing field" },
@@ -17,7 +17,8 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
         const updateCareer = await updateCareerPost({
             id: careerId,
-            title, tagline
+            title, tagline,
+            description
         });
 
         return NextResponse.json(

@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image'
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Logo from '@/assets/images/logo.png'
 import PrimaryButton from '../button/primaryButton/primaryButton';
 import { IoIosArrowDroprightCircle } from "react-icons/io";
@@ -9,23 +9,30 @@ import { FaChevronDown } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import DrawerNav from './drawerNav';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const BottomHeader = () => {
 
     const [drawerOpen, setDrawerOpen] = useState(false);
     const router = useRouter();
+    const pathname = usePathname();
 
     const dropdownValuesNavigator = useCallback((link: string) => (
         router.push(link)
     ), [])
+
+    useEffect(() => {
+        if (pathname) {
+            setDrawerOpen(false)
+        }
+    }, [pathname])
 
     const navItems = useMemo(() => (
         [
             {
                 id: 1,
                 title: "About Us",
-                link: "/",
+                link: "/about",
                 isDropDown: false
             },
             {
@@ -63,13 +70,13 @@ const BottomHeader = () => {
             {
                 id: 4,
                 title: "Customers",
-                link: "/",
+                link: "/customers",
                 isDropDown: false
             },
             {
                 id: 5,
                 title: "Our Partners",
-                link: "/",
+                link: "/partners",
                 isDropDown: false
             },
             {
@@ -82,17 +89,27 @@ const BottomHeader = () => {
     ), [])
 
 
-    const contactUsHandler = () => { }
+    const contactUsHandler = () => {
+        router.push('/contact')
+    }
 
     const drawerOpenHandler = () => {
         setDrawerOpen(!drawerOpen)
+    }
+
+    const supportPortalHandler = () => {
+        window.open("https://myiipl.on.spiceworks.com/portal/registrations", "_blank");
+    }
+
+    const homeRedirectHandler = () => {
+        router.push('/')
     }
 
     return (
         <header className='w-full py-2'>
             <section className='container flex items-center justify-between'>
                 <section>
-                    <Image src={Logo} alt='logo' priority width={150} height={150} className='w-[110px] cursor-pointer' />
+                    <Image onClick={homeRedirectHandler} src={Logo} alt='logo' priority width={150} height={150} className='w-[110px] cursor-pointer' />
                 </section>
                 {/* for large devices view */}
                 <nav className='hidden lg:block'>
@@ -112,9 +129,12 @@ const BottomHeader = () => {
                                                     </Link>
                                                 </Dropdown>
                                                 :
-                                                <Link href={navItem?.link}>
-                                                    {navItem.title}
-                                                </Link>
+                                                navItem?.title == "Support Portal" ?
+                                                    <p onClick={supportPortalHandler}>{navItem.title}</p>
+                                                    :
+                                                    <Link href={navItem?.link}>
+                                                        {navItem.title}
+                                                    </Link>
                                         }
                                     </li>
                                 )
@@ -142,6 +162,7 @@ const BottomHeader = () => {
                                             {
                                                 navItem.isDropDown ?
                                                     <Dropdown
+                                                        trigger={["hover"]}
                                                         menu={{ items: navItem.dropdownValues }}>
                                                         <Link href={"/"} className='flex items-center gap-2 text-[#003173]!'>
                                                             {navItem.title}
@@ -149,12 +170,23 @@ const BottomHeader = () => {
                                                         </Link>
                                                     </Dropdown>
                                                     :
-                                                    navItem.title
+                                                    navItem?.title == "Support Portal" ?
+                                                        <p onClick={supportPortalHandler} className='flex items-center gap-2 text-[#003173]!'>{navItem.title}</p>
+                                                        :
+                                                        <Link href={navItem?.link} className='flex items-center gap-2 text-[#003173]!'>
+                                                            {navItem.title}
+                                                        </Link>
                                             }
                                         </li>
                                     )
                                 })
                             }
+                            <PrimaryButton
+                                text='Contact Us'
+                                className='primary-btn w-fit!'
+                                onClick={contactUsHandler}
+                                icon={<IoIosArrowDroprightCircle size={18} className='mt-1' />}
+                            />
                         </ul>
                     }
                 />

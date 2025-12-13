@@ -32,8 +32,17 @@ const Careers = () => {
         })
       },
       {
-        title: 'Description',
+        title: 'Tagline',
         dataIndex: 'tagline',
+        render: ((text, record) => {
+          return (
+            <span title={text}>{text.slice(0, 50) + '...'}</span>
+          )
+        })
+      },
+      {
+        title: 'Description',
+        dataIndex: 'description',
         render: ((text, record) => {
           return (
             <span title={text}>{text.slice(0, 50) + '...'}</span>
@@ -55,14 +64,19 @@ const Careers = () => {
         dataIndex: '',
         render: ((text, record) => {
           return (
-            <Button type="primary" className='primary-btn' size='large' onClick={() => rowEditHandler(record)}>
-              Edit
-            </Button>
+            <div className='flex gap-3'>
+              <Button type="primary" className='primary-btn' size='large' onClick={() => rowEditHandler(record)}>
+                Edit
+              </Button>
+              <Button type="primary" className='primary-btn bg-red-500!' size='large' onClick={() => rowDeleteHandler(record)}>
+                Delete
+              </Button>
+            </div>
           )
         })
       },
     ]
-  ), [])
+  ), [isRefresh])
 
   useEffect(() => {
     (async () => {
@@ -94,6 +108,21 @@ const Careers = () => {
       setOpenCareerModal(true)
       setModalState(ActionType.edit)
     }, 0);
+  }
+
+  const rowDeleteHandler = async (record: any) => {
+    try {
+      setLoading(true)
+      let res: any = await apiClient.delete(`/career/delete/${record?.id}`);
+      if (res?.success) {
+        setIsRefresh(!isRefresh)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    finally {
+      setLoading(false)
+    }
   }
 
   const backHandler = () => {
