@@ -11,7 +11,6 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
 }
 
 // main project category that is seeded to the db.
@@ -55,12 +54,12 @@ model Project {
 
 // career 
 model Career {
-  id        Int      @id @default(autoincrement())
-  title     String
-  tagline   String?  @db.Text
-  description String @db.Text
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  tagline     String?  @db.Text
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 // events model
@@ -129,7 +128,7 @@ model CaseStudy {
 // users
 model Users {
   id        Int      @id @default(autoincrement())
-  email     String    @unique
+  email     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -4,6 +4,7 @@
     "private": true,
     "description": "Shared logic and dependencies for the Innovative Integration monorepo.",
     "main": "index.ts",
+    "type": "module",
     "scripts": {
         "db:migrate": "prisma migrate dev",
         "db:generate": "prisma generate",
