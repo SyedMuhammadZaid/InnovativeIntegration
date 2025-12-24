@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import prisma from '../prisma'
+import { getPrisma } from "../prisma";
 import jwt from "jsonwebtoken";
 
 
@@ -12,6 +12,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_dev_secret_key";
 
 
 export const signIn = async (payload: SignInInterface) => {
+    const prisma = getPrisma();
     const { email, password } = payload;
     let validateUser = await prisma.users.findUnique({ where: { email: email.toLowerCase() } });
     if (!validateUser) {
@@ -36,7 +37,7 @@ export const signIn = async (payload: SignInInterface) => {
 
 
     const { password: _, ...userWithoutPassword } = validateUser;
-    
+
     return {
         user: userWithoutPassword,
         token

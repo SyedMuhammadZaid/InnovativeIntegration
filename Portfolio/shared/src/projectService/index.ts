@@ -1,4 +1,4 @@
-import prisma from "../prisma";
+import { getPrisma } from "../prisma";
 
 interface CreateProjectSubCategory {
     name: string,
@@ -45,6 +45,7 @@ interface UpdateProject {
 
 // for creating project sub categories (second layer)
 export const createProjectSubCategory = async (data: CreateProjectSubCategory) => {
+    const prisma = getPrisma();
     return await prisma.projectSubCategory.create({
         data: {
             name: data.name,
@@ -56,6 +57,7 @@ export const createProjectSubCategory = async (data: CreateProjectSubCategory) =
 
 // for updating project sub categories (second layer)
 export const updateProjectSubCategory = async (data: UpdateProjectSubCategory) => {
+    const prisma = getPrisma();
     const { id, ...rest } = data;
     return await prisma.projectSubCategory.update({
         where: { id },
@@ -67,6 +69,7 @@ export const updateProjectSubCategory = async (data: UpdateProjectSubCategory) =
 
 // for deleting project sub categories (second layer)
 export const deletingProjectSubCategory = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.projectSubCategory.delete({
         where: { id }
     });
@@ -74,6 +77,7 @@ export const deletingProjectSubCategory = async (id: number) => {
 
 // for getting all project sub categories (second layer)
 export const getAllProjectSubCategories = async () => {
+    const prisma = getPrisma();
     return await prisma.projectSubCategory.findMany(
         { orderBy: { createdAt: 'desc' } }
     )
@@ -81,6 +85,7 @@ export const getAllProjectSubCategories = async () => {
 
 // for getting all projects sub categories (second layer) that lies under first layer.
 export const getAllSubCategoriesProjectsByFirstLayer = async (id: string) => {
+    const prisma = getPrisma();
     return await prisma.projectSubCategory.findMany({
         where: { mainCategoryId: { equals: id } }
     })
@@ -88,6 +93,7 @@ export const getAllSubCategoriesProjectsByFirstLayer = async (id: string) => {
 
 // for creating a project
 export const createProject = async (data: CreateProject) => {
+    const prisma = getPrisma();
     return await prisma.project.create({
         data: {
             name: data.name,
@@ -105,6 +111,7 @@ export const createProject = async (data: CreateProject) => {
 
 // for updating a project
 export const updateProject = async (data: UpdateProject) => {
+    const prisma = getPrisma();
     const { id, ...rest } = data;
     return await prisma.project.update({
         where: { id },
@@ -116,6 +123,7 @@ export const updateProject = async (data: UpdateProject) => {
 
 // for deleting a project
 export const deleteProject = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.project.delete({
         where: { id }
     });
@@ -123,6 +131,7 @@ export const deleteProject = async (id: number) => {
 
 // for getting all projects
 export const getAllProjects = async () => {
+    const prisma = getPrisma();
     return await prisma.project.findMany(
         { orderBy: { createdAt: 'desc' } }
     );
@@ -130,11 +139,13 @@ export const getAllProjects = async () => {
 
 // for getting a single project
 export const getProject = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.project.findFirst({ where: { id } });
 }
 
 // for getting all projects belong to sub project by id
 export const getAllProjectsBySubProjectId = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.project.findMany(
         { where: { projectSubCategoryId: { equals: id } }, include: { projectSubCategory: true } },
     )

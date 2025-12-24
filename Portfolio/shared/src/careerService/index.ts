@@ -1,4 +1,4 @@
-import prisma from "../prisma";
+import { getPrisma } from "../prisma";
 
 interface CreateCareerPost {
     title: string
@@ -15,6 +15,7 @@ interface UpdateCareerPost {
 
 // for creating a career post
 export const createCareerPost = async (data: CreateCareerPost) => {
+    const prisma = getPrisma();
     return await prisma.career.create({
         data: {
             title: data.title,
@@ -26,6 +27,7 @@ export const createCareerPost = async (data: CreateCareerPost) => {
 
 // for updating a career post
 export const updateCareerPost = async (data: UpdateCareerPost) => {
+    const prisma = getPrisma();
     const { id, ...rest } = data;
     return await prisma.career.update({
         where: { id },
@@ -37,6 +39,7 @@ export const updateCareerPost = async (data: UpdateCareerPost) => {
 
 // for deleting a career post
 export const deleteCareerPost = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.career.delete({
         where: { id }
     });
@@ -44,6 +47,7 @@ export const deleteCareerPost = async (id: number) => {
 
 // for getting all career posts
 export const getAllCareerPosts = async () => {
+    const prisma = getPrisma();
     return await prisma.career.findMany({
         orderBy: { updatedAt: 'desc' }
     });

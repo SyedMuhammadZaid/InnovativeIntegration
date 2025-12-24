@@ -1,4 +1,4 @@
-import prisma from "../prisma"
+import { getPrisma } from "../prisma";
 
 interface CreateBlogPost {
     previewHeading: string
@@ -20,6 +20,7 @@ interface BlogQueryParams {
 
 // for creating blog
 export const createBlog = async (data: CreateBlogPost) => {
+    const prisma = getPrisma();
     return await prisma.blog.create({
         data: {
             previewHeading: data.previewHeading,
@@ -31,6 +32,7 @@ export const createBlog = async (data: CreateBlogPost) => {
 
 // for updating blog
 export const updateBlog = async (data: UpdateBlogPost) => {
+    const prisma = getPrisma();
     const { id, ...rest } = data;
     return await prisma.blog.update({
         where: { id },
@@ -42,6 +44,7 @@ export const updateBlog = async (data: UpdateBlogPost) => {
 
 // for deleting blog
 export const deleteBlog = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.blog.delete({
         where: { id }
     });
@@ -49,6 +52,7 @@ export const deleteBlog = async (id: number) => {
 
 // for getting all blogs
 export const getAllBlogs = async (params?: BlogQueryParams) => {
+    const prisma = getPrisma();
     const limit = params?.limit ?? undefined; // if not passed, Prisma fetches all
     const offset = params?.offset ?? 0;       // default skip is 0
     const count = await prisma.blog.count();
@@ -67,6 +71,7 @@ export const getAllBlogs = async (params?: BlogQueryParams) => {
 
 // to get a single blog
 export const getBlog = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.blog.findFirst({
         where: { id }
     })

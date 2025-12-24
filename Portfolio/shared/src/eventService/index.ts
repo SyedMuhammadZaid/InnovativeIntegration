@@ -1,4 +1,4 @@
-import prisma from "../prisma";
+import { getPrisma } from "../prisma";
 import { eventStatus } from "../utils/constants";
 
 interface createEvent {
@@ -38,6 +38,7 @@ interface eventQueryParams {
 
 // for creating event
 export const createEvent = async (data: createEvent) => {
+    const prisma = getPrisma();
     console.log(data)
     return await prisma.event.create({
         data: {
@@ -54,6 +55,7 @@ export const createEvent = async (data: createEvent) => {
 
 // for updating event
 export const updateEvent = async (data: updateEvent) => {
+    const prisma = getPrisma();
     const { id, ...rest } = data;
     return await prisma.event.update({
         where: { id },
@@ -65,6 +67,7 @@ export const updateEvent = async (data: updateEvent) => {
 
 // for deleting event
 export const deleteEvent = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.event.delete({
         where: { id }
     });
@@ -72,6 +75,7 @@ export const deleteEvent = async (id: number) => {
 
 // for getting all the events
 export const getAllEvents = async (params?: eventQueryParams) => {
+    const prisma = getPrisma();
     const limit = params?.limit ?? undefined;
     const offset = params?.offset ?? 0;
     const count = await prisma.event.count();
@@ -88,6 +92,7 @@ export const getAllEvents = async (params?: eventQueryParams) => {
 
 // for getting upcoming events
 export const getAllUpcomingEvents = async () => {
+    const prisma = getPrisma();
     return await prisma.event.findMany({
         where: { status: 'UPCOMING' },
         orderBy: { createdAt: 'desc' }
@@ -95,6 +100,7 @@ export const getAllUpcomingEvents = async () => {
 }
 
 export const getAllCompletedEvents = async (params?: eventQueryParams) => {
+    const prisma = getPrisma();
     const limit = params?.limit ?? undefined;
     const offset = params?.offset ?? 0;
     const count = await prisma.event.count();
@@ -113,6 +119,7 @@ export const getAllCompletedEvents = async (params?: eventQueryParams) => {
 
 // for getting a single event
 export const getEvent = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.event.findFirst({
         where: { id }
     });
@@ -120,6 +127,7 @@ export const getEvent = async (id: number) => {
 
 // for creating a registration against any event from an app.
 export const createEventRegistration = async (data: createEventRegistration) => {
+    const prisma = getPrisma();
     if (data.email && data.eventId) {
         let alreadyRegistered = await prisma.eventRegistration.findFirst({
             where: {

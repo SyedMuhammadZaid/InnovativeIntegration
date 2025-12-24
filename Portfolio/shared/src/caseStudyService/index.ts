@@ -1,4 +1,4 @@
-import prisma from "../prisma";
+import { getPrisma } from "../prisma";
 
 interface createCaseStudy {
     title: string
@@ -30,6 +30,7 @@ interface caseStudyQueryParams {
 
 // for creating case study
 export const createCaseStudy = async (data: createCaseStudy) => {
+    const prisma = getPrisma();
     return await prisma.caseStudy.create({
         data: {
             title: data.title,
@@ -46,6 +47,7 @@ export const createCaseStudy = async (data: createCaseStudy) => {
 
 // for updating case study
 export const updateCaseStudy = async (data: updateCaseStudy) => {
+    const prisma = getPrisma();
     const { id, ...rest } = data;
     return await prisma.caseStudy.update({
         where: { id },
@@ -57,6 +59,7 @@ export const updateCaseStudy = async (data: updateCaseStudy) => {
 
 // for deleting case study
 export const deleteCaseStudy = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.caseStudy.delete({
         where: { id }
     });
@@ -64,7 +67,7 @@ export const deleteCaseStudy = async (id: number) => {
 
 // for getting all case studies
 export const getAllCaseStudies = async (params?: caseStudyQueryParams) => {
-
+    const prisma = getPrisma();
     const limit = params?.limit ?? undefined;
     const offset = params?.offset ?? 0;
     const count = await prisma.caseStudy.count();
@@ -83,6 +86,7 @@ export const getAllCaseStudies = async (params?: caseStudyQueryParams) => {
 
 // to get a single case study
 export const getCaseStudy = async (id: number) => {
+    const prisma = getPrisma();
     return await prisma.caseStudy.findFirst({
         where: { id }
     });
