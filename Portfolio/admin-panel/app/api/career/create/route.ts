@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { createCareerPost } from "@innovative-integration/shared";
 import { NextResponse } from "next/server";
 

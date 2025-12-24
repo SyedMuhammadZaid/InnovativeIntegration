@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getAllProjects } from "@innovative-integration/shared";
 import { NextResponse } from "next/server";
 

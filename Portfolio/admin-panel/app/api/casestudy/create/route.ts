@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { createCaseStudy } from "@innovative-integration/shared";
 import { NextResponse } from "next/server";
 
