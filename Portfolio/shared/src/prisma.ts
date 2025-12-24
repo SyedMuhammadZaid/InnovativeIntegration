@@ -1,23 +1,28 @@
 import { PrismaClient } from "@prisma/client";
 
-declare global {
-  // eslint-disable-next-line no-var
-  var prisma: PrismaClient | undefined;
-}
+const globalForPrisma = globalThis as unknown as {
+  prisma?: PrismaClient;
+};
 
-const prisma =
-  global.prisma ??
-  new PrismaClient({
-    log: ["query", "error", "warn"],
+function createPrismaClient() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL is not defined");
+  }
+
+  return new PrismaClient({
     datasources: {
       db: {
-        url: process.env.DATABASE_URL!,
+        url: process.env.DATABASE_URL,
       },
     },
   });
+}
+
+export const prisma =
+  globalForPrisma.prisma ?? createPrismaClient();
 
 if (process.env.NODE_ENV !== "production") {
-  global.prisma = prisma;
+  globalForPrisma.prisma = prisma;
 }
 
 export default prisma;
