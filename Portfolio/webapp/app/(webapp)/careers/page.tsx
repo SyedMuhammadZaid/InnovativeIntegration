@@ -27,7 +27,7 @@ export default function Careers() {
         (async () => {
             try {
                 showLoader()
-                let allCareers: any = await getCareers();
+                const allCareers: any = await getCareers();
                 if (allCareers?.success) {
                     setCareers(allCareers?.data)
                 }

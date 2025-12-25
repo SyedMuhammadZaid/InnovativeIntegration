@@ -5,7 +5,7 @@ import Image from "next/image"
 
 interface Logo {
     name: string
-    image: any
+    image: string
 }
 
 interface IndustrySectionProps {

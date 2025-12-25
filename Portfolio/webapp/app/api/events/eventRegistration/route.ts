@@ -1,7 +1,7 @@
 import { createEventRegistration } from "@innovative-integration/shared";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
         const { firstName, lastName, email, phoneNo, eventId } = body;

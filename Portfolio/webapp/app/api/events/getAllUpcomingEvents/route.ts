@@ -1,7 +1,7 @@
 import { getAllUpcomingEvents } from "@innovative-integration/shared";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
     try {
         const res = await getAllUpcomingEvents();
         return NextResponse.json(

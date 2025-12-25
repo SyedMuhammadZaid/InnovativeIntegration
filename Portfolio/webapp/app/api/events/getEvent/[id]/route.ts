@@ -1,10 +1,10 @@
 import { getEvent } from "@innovative-integration/shared";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
     try {
-        const id = params.id;
-        const res = await getEvent(Number(id));
+        const id = Number(params.id);
+        const res = await getEvent(id);
         return NextResponse.json(
             { success: true, data: res },
             { status: 200 }

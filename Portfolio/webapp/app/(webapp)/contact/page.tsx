@@ -8,10 +8,14 @@ import Image from "next/image";
 import { Form, Input, Select } from "antd";
 import PrimaryButton from "@/components/shared/button/primaryButton/primaryButton";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import LeafletMap from "@/components/shared/map/map";
 import CtaSection from "@/components/shared/cta-banner/cta_Banner";
 import AwardsSection from "@/components/shared/awards/awards";
 import { FiArrowRight, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import dynamic from "next/dynamic";
+
+const LeafletMap = dynamic(() => import("@/components/shared/map/map"), {
+  ssr: false,
+});
 
 const prefixSelector = (
     <Form.Item name="prefix" noStyle>
