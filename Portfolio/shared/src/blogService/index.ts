@@ -76,4 +76,3 @@ export const getBlog = async (id: number) => {
         where: { id }
     })
 }
-
