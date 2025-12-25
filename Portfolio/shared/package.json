@@ -14,8 +14,8 @@
         "dev:db": "nodemon --watch src --exec tsx src/db.ts"
     },
     "dependencies": {
-        "@prisma/client": "^6.16.1",
-        "bcryptjs": "^3.0.2",
+        "@prisma/client": "^6.19.1",
+        "bcryptjs": "^3.0.3",
         "jsonwebtoken": "^9.0.2",
         "server-only": "^0.0.1"
     },

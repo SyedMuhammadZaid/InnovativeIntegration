@@ -1,5 +1,12 @@
 import { getPrisma } from "../prisma";
 import bcrypt from "bcryptjs";
+import path from "path";
+import dotenv from "dotenv";
+
+// 👇 force-load shared/.env
+dotenv.config({
+    path: path.resolve(process.cwd(), ".env"),
+});
 
 const email = process.argv[2];
 const password = process.argv[3];
