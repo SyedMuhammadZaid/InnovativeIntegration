@@ -1,16 +1,20 @@
-import { getPrisma } from "../prisma";
+// Portfolio/shared/src/scripts/createAdmin.ts
 import bcrypt from "bcryptjs";
+import { PrismaClient } from "@prisma/client";
+
+// Prisma 7 reads DATABASE_URL from environment
+const prisma = new PrismaClient();
 
 const email = process.argv[2];
 const password = process.argv[3];
 
 if (!email || !password) {
-    console.error("Usage: node createAdmin <email> <password>");
+    console.error("Usage: tsx createAdmin.ts <email> <password>");
     process.exit(1);
 }
 
 async function main() {
-    const prisma = getPrisma();
+    console.log("DATABASE_URL:", process.env.DATABASE_URL);
 
     try {
         const existing = await prisma.users.findUnique({
@@ -32,12 +36,12 @@ async function main() {
         });
 
         console.log("✅ Admin created successfully!");
+    } catch (error: any) {
+        console.error("❌ Error creating admin:", error.message);
+        console.error("Error code:", error.code);
     } finally {
         await prisma.$disconnect();
     }
 }
 
-main().catch((err) => {
-    console.error("❌ Error creating admin:", err);
-    process.exit(1);
-});
+main();
