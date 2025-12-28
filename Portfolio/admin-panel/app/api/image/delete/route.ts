@@ -3,8 +3,7 @@ export const dynamic = "force-dynamic";
 import fs from "fs";
 import path from "path";
 import { NextRequest, NextResponse } from "next/server";
-
-const uploadDir = path.join(process.cwd(), "public/uploads");
+import { UPLOAD_DIR } from "@/Utils/upload-config";
 
 export async function DELETE(req: NextRequest) {
     try {
@@ -18,12 +17,13 @@ export async function DELETE(req: NextRequest) {
             );
         }
 
-        // ✅ FIX: handle both `/uploads/...` and `/api/uploads/...` URLs gracefully
+        // ✅ Handle different URL formats
         fileName = fileName
             .replace(/^\/api\/uploads\//, "")
-            .replace(/^\/uploads\//, "");
+            .replace(/^\/uploads\//, "")
+            .replace(/^\//, ""); // Remove leading slash
 
-        const filePath = path.join(uploadDir, fileName);
+        const filePath = path.join(UPLOAD_DIR, fileName);
 
         if (!fs.existsSync(filePath)) {
             return NextResponse.json(
@@ -33,15 +33,16 @@ export async function DELETE(req: NextRequest) {
         }
 
         fs.unlinkSync(filePath);
+        console.log(`🗑️ Deleted file: ${filePath}`);
 
         return NextResponse.json({
             success: true,
             message: `Deleted ${fileName}`,
         });
-    } catch (error) {
+    } catch (error: any) {
         console.error("❌ Delete error:", error);
         return NextResponse.json(
-            { success: false, message: "Failed to delete file" },
+            { success: false, message: `Failed to delete file: ${error.message}` },
             { status: 500 }
         );
     }
