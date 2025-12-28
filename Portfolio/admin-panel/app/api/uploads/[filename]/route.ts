@@ -12,7 +12,7 @@ export async function GET(
     try {
         // Sanitize filename
         const filename = params.filename.replace(/\.\./g, ''); // Prevent directory traversal
-        
+
         const filePath = path.join(UPLOAD_DIR, filename);
 
         if (!fs.existsSync(filePath)) {
@@ -22,7 +22,7 @@ export async function GET(
 
         const file = fs.readFileSync(filePath);
         const ext = path.extname(filename).toLowerCase();
-        
+
         // Determine MIME type
         let mime = "application/octet-stream";
         const mimeTypes: Record<string, string> = {
@@ -34,16 +34,19 @@ export async function GET(
             '.svg': 'image/svg+xml',
             '.pdf': 'application/pdf',
         };
-        
+
         if (mimeTypes[ext]) {
             mime = mimeTypes[ext];
         }
 
         // Set cache headers for better performance
         return new NextResponse(file, {
-            headers: { 
+            headers: {
                 "Content-Type": mime,
                 "Cache-Control": "public, max-age=31536000, immutable", // Cache for 1 year
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type",
             },
         });
     } catch (error: any) {
