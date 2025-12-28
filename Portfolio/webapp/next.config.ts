@@ -13,21 +13,36 @@ const nextConfig = {
   images: {
     remotePatterns: isProd
       ? [
-        {
-          protocol: "https",
-          hostname: "api.myapp.com", // 🌐 your production API domain
-          pathname: "/api/uploads/**",
-        },
-      ]
+          // Production: Point to your Railway admin-panel
+          {
+            protocol: "https",
+            hostname: "innovativeintegration-production-0f11.up.railway.app",
+            pathname: "/api/uploads/**",
+          },
+          // Optional: Add your custom domain if you have one
+          {
+            protocol: "https",
+            hostname: "admin.yourdomain.com", // If you have custom domain
+            pathname: "/api/uploads/**",
+          },
+        ]
       : [
-        {
-          protocol: "http",
-          hostname: "localhost",
-          port: "3000",
-          pathname: "/api/uploads/**",
-        },
-      ],
-  },
+          // Development: Point to your local admin-panel
+          {
+            protocol: "http",
+            hostname: "localhost",
+            port: "3000", // Default Next.js port
+            pathname: "/api/uploads/**",
+          },
+          // Also allow localhost:3001 if admin-panel runs on different port
+          {
+            protocol: "http",
+            hostname: "localhost",
+            port: "3001",
+            pathname: "/api/uploads/**",
+          },
+        ],
+  }
 };
 
 module.exports = nextConfig;

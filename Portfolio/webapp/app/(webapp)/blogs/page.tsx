@@ -70,7 +70,6 @@ export default function Blogs() {
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 md:mx-0 mx-auto">
                     {
                         blogs.map((blog, index) => {
-                            console.log(`image url ======= https://innovativeintegration-production-0f11.up.railway.app${blog?.previewImageUrl}`)
                             return (
                                 <motion.div
                                     key={blog?.id}
