@@ -64,7 +64,7 @@ export default function SubProjects({ params }: { params: { id: string } }) {
                                 >
                                     <div className="relative w-[250px] h-[300px] flex flex-col rounded-xl">
                                         <div className="w-full h-[60%]">
-                                            <Image src={project2 || `${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${project?.imageUrl}`} alt="eventImg" width={400} height={400} className="w-full h-full object-cover rounded-tl-xl rounded-tr-xl" />
+                                            <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${project?.imageUrl}`} alt="eventImg" width={400} height={400} className="w-full h-full object-cover rounded-tl-xl rounded-tr-xl" />
                                         </div>
 
                                         <div className="h-full bg-white rounded-bl-2xl rounded-br-2xl p-3 flex flex-col gap-2 items-center justify-center w-full">
