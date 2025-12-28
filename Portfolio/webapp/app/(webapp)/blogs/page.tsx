@@ -84,7 +84,7 @@ export default function Blogs() {
                                             {/* Image Container */}
                                             <div className="relative h-56 overflow-hidden">
                                                 <Image
-                                                    src={project2 || `${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${blog?.previewImageUrl}`}
+                                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${blog?.previewImageUrl}`}
                                                     alt={blog?.previewHeading}
                                                     width={400}
                                                     height={300}

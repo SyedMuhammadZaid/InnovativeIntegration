@@ -288,7 +288,7 @@ export default function Events() {
                                         <Link href={`/events/${String(event?.id)}`}>
                                             <div className="relative w-[300px] md:w-[250px] h-[300px]">
                                                 <div className="absolute top-0 left-0 w-full h-full z-10">
-                                                    <Image src={project2 || `${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${event?.imageUrl}`} alt="eventImg" width={400} height={400} className="w-full h-full rounded-2xl" />
+                                                    <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${event?.imageUrl}`} alt="eventImg" width={400} height={400} className="w-full h-full rounded-2xl" />
                                                 </div>
 
                                                 <div className="absolute w-full h-full z-20 blogcard-layer opacity-30 rounded-2xl object-cover" />
