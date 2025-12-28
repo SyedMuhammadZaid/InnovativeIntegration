@@ -202,7 +202,7 @@ export default function Events() {
                                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-fit mx-auto sm:mx-0"
                                         >
                                             <div className="relative col-span-1">
-                                                <Image src={upcomingEvent?.imageUrl} alt="eventThumbnail" width={500} height={500} className="w-[420px] h-[420px] object-center object-cover rounded-xl cursor-pointer" />
+                                                <Image src={`https://innovativeintegration-production-0f11.up.railway.app${upcomingEvent?.imageUrl}`} alt="eventThumbnail" width={500} height={500} className="w-[420px] h-[420px] object-center object-cover rounded-xl cursor-pointer" />
                                                 <div className="absolute bottom-0 left-0">
                                                     <motion.div
                                                         key={upcomingEvent?.id}
