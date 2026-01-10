@@ -15,7 +15,7 @@ import { MdManageAccounts } from "react-icons/md";
 export default function ApproachAccordion({ content }: { content: any }) {
     
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 w-full">
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -35,9 +35,9 @@ export default function ApproachAccordion({ content }: { content: any }) {
                 We provide a 360-degree process of securing your network with a structured deployment process.
             </motion.p>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center mt-2">
+            <div className="flex items-center gap-3 mt-2 w-full">
                 {/* Left side - Image */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -45,7 +45,7 @@ export default function ApproachAccordion({ content }: { content: any }) {
                     className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl"
                 >
                     <Image src={servicesApproach} alt="Our Proven Approach" fill className="object-cover" />
-                </motion.div>
+                </motion.div> */}
 
                 {/* Right side - Accordion */}
                 {/* <motion.div
@@ -66,7 +66,7 @@ export default function ApproachAccordion({ content }: { content: any }) {
                     />
                 </motion.div> */}
 
-                <div className="grid grid-cols-2 gap-5">
+                <div className="grid grid-cols-4 gap-4 w-full">
                     {content.map((approach: any, index: any) => (
                         <motion.div
                             key={approach?.id}
@@ -75,7 +75,7 @@ export default function ApproachAccordion({ content }: { content: any }) {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.4 }}
                             whileHover={{ y: -10 }}
-                            className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300"
+                            className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 w-full "
                         >
                             <div className="flex items-start gap-4">
                                 {/* <div className="flex-shrink-0">
@@ -83,9 +83,9 @@ export default function ApproachAccordion({ content }: { content: any }) {
                                         <useCase.icon className="w-6 h-6 text-white" />
                                     </div>
                                 </div> */}
-                                <div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">{approach?.title}</h3>
-                                    <p className="text-gray-600 leading-relaxed">{approach?.content}</p>
+                                <div className="w-full h-full flex flex-col justify-between items-left gap-2">
+                                    <h3 className="text-xl font-bold text-gray-600 mb-2">{approach?.title}</h3>
+                                    <p className="text-gray-600 leading-relaxed text-left">{approach?.content}</p>
                                 </div>
                             </div>
                         </motion.div>
