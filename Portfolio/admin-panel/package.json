@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start-real": "next start -p $PORT",
+    "start-real": "next start --hostname 0.0.0.0 -p $PORT",
     "start": "node server-log.mjs",
     "lint": "eslint"
   },
