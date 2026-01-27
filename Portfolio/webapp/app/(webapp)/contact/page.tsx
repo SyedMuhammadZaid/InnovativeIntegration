@@ -14,7 +14,7 @@ import { FiArrowRight, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import dynamic from "next/dynamic";
 
 const LeafletMap = dynamic(() => import("@/components/shared/map/map"), {
-  ssr: false,
+    ssr: false,
 });
 
 const prefixSelector = (
@@ -33,7 +33,9 @@ export default function ContactUs() {
 
     const [form] = Form.useForm();
 
-    const onFinish = () => { }
+    const onFinish = (values: any) => {
+        console.log(values)
+    }
 
     const contactInfo = [
         {
@@ -48,9 +50,23 @@ export default function ContactUs() {
         },
         {
             icon: <FiMapPin className="w-8 h-8" />,
-            title: "Our Address",
+            title: "Our Karachi Address",
             details: [
-                "B-103 1st Floor Fortune Tower Plot No. 43 1-A Main, Shahrah-e-Faisal Block 6 P.E.C.H.S., Karachi, 75400, Pakistan",
+                "B-103 1st Floor Fortune Towers Plot No. 43 1-A Main, Shahrah-e-Faisal Block 6 P.E.C.H.S., Karachi, 75400, Pakistan",
+            ],
+        },
+        {
+            icon: <FiMapPin className="w-8 h-8" />,
+            title: "Our Lahore Address",
+            details: [
+                "24, 1st Floor, Al Hafeez View, 67/D-1, Gulberg III Lahore-54000",
+            ],
+        },
+        {
+            icon: <FiMapPin className="w-8 h-8" />,
+            title: "Our Islamabad Address",
+            details: [
+                "305, 3rd Floor, Emirates Tower, M-13, F-7 Markaz, Islamabad, 44000",
             ],
         },
     ]

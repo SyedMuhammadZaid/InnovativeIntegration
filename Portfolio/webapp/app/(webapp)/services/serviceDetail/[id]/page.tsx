@@ -46,7 +46,7 @@ export default function ServiceDetail({ params }: { params: { id: string } }) {
                 <ServicesTabs list={serviceTitles} bannerImg={service?.bannerImg} selectedSubServiceContentHandler={selectedSubServiceContent} />
                 <ServiceContent content={selectedSubService} />
                 <BenefitsGrid content={selectedSubService?.benefits} />
-                <VendorsSection content={selectedSubService?.technology} />
+                <VendorsSection content={selectedSubService?.technology} title={selectedSubService?.title} />
                 <UseCasesSection content={selectedSubService?.useCases} />
                 <ApproachAccordion content={selectedSubService?.approach} />
                 <ServiceFAQSection content={selectedSubService?.faqs} />

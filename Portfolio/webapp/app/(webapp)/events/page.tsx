@@ -47,10 +47,10 @@ const sendEventEmail = async (data: any) => {
 
     try {
         await emailjs.send(
-            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_0489bma",
-            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_2jmqb2c",
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID_EVENTS || "service_0489bma",
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_EVENTS || "template_2jmqb2c",
             templateParams,
-            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "JCB0PpUkcLxufJh9Z"
+            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY_EVENTS || "JCB0PpUkcLxufJh9Z"
         );
         console.log("Email sent successfully!");
     }
@@ -202,7 +202,7 @@ export default function Events() {
                                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-fit mx-auto sm:mx-0"
                                         >
                                             <div className="relative col-span-1">
-                                                <Image src={`https://innovativeintegration-production-0f11.up.railway.app${upcomingEvent?.imageUrl}`} alt="eventThumbnail" width={500} height={500} className="w-[420px] h-[420px] object-center object-cover rounded-xl cursor-pointer" />
+                                                <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${upcomingEvent?.imageUrl}`} alt="eventThumbnail" width={500} height={500} className="w-[420px] h-[420px] object-center object-cover rounded-xl cursor-pointer" />
                                                 <div className="absolute bottom-0 left-0">
                                                     <motion.div
                                                         key={upcomingEvent?.id}
@@ -288,7 +288,7 @@ export default function Events() {
                                         <Link href={`/events/${String(event?.id)}`}>
                                             <div className="relative w-[300px] md:w-[250px] h-[300px]">
                                                 <div className="absolute top-0 left-0 w-full h-full z-10">
-                                                    <Image src={`https://innovativeintegration-production-0f11.up.railway.app${event?.imageUrl}`} alt="eventImg" width={400} height={400} className="object-cover w-full h-full rounded-2xl" />
+                                                    <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${event?.imageUrl}`} alt="eventImg" width={400} height={400} className="object-cover w-full h-full rounded-2xl" />
                                                 </div>
 
                                                 <div className="absolute w-full h-full z-20 blogcard-layer opacity-30 rounded-2xl object-cover" />

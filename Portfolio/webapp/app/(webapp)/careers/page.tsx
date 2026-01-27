@@ -94,7 +94,7 @@ export default function Careers() {
                                         <div>
                                             <PrimaryButton
                                                 text='Apply Now'
-                                                className='primary-btn hidden! lg:inline-flex!'
+                                                className='primary-btn'
                                                 onClick={() => applyCareerHandler(career)}
                                                 icon={<IoIosArrowDroprightCircle size={18} className='mt-1' />}
                                             />
@@ -110,7 +110,7 @@ export default function Careers() {
                     <p>Interested applications can also apply on E- mail address</p>
                     <span className="text-red-400 font-semibold cursor-pointer underline">careers@innovativeintegration.net</span>
                 </div>
-                <AwardsSection />
+                {/* <AwardsSection /> */}
             </section>
             <CareerApplicationModal
                 open={modalInfo?.open}

@@ -99,7 +99,7 @@ export default function BlogSection() {
                                         {/* Image Container */}
                                         <div className="relative h-56 overflow-hidden">
                                             <Image
-                                                src={`https://innovativeintegration-production-0f11.up.railway.app${blog?.previewImageUrl}`}
+                                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${blog?.previewImageUrl}`}
                                                 alt={blog?.previewHeading}
                                                 width={400}
                                                 height={300}

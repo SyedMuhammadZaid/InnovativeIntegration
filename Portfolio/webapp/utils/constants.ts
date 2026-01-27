@@ -10,7 +10,7 @@ export const ParentLayerProjectsMapping: any = {
 export const ParentLayerProjectsMappingDescription: any = {
     "1": "Projects focused on protecting networks, systems, and data from cyber threats. Includes firewalls, intrusion detection/prevention systems, VPNs, endpoint protection, and security audits.",
 
-    "2": "Projects designed to ensure data availability by implementing регуляр backups, disaster recovery strategies, and business continuity solutions for critical systems.",
+    "2": "Projects designed to ensure data availability by implementing backups, disaster recovery strategies, and business continuity solutions for critical systems.",
 
     "3": "Implementation and management of enterprise-grade storage solutions using NetApp technologies for high availability, scalability, and efficient data management.",
 
