@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Innovative Integration",
   description: "Company Portfolio Website",
   icons:{
-    icon:"/tabLogo.png"
+    icon:"/tabLogo.PNG"
   }
 };
 
