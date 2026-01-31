@@ -5,17 +5,45 @@ import contactCall from "@/assets/images/contactCall.png"
 import contactEmail from "@/assets/images/contactEmail.png"
 import contactLocation from "@/assets/images/contactLocation.png"
 import Image from "next/image";
-import { Form, Input, Select } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import PrimaryButton from "@/components/shared/button/primaryButton/primaryButton";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import CtaSection from "@/components/shared/cta-banner/cta_Banner";
 import AwardsSection from "@/components/shared/awards/awards";
 import { FiArrowRight, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import dynamic from "next/dynamic";
+import emailjs from "emailjs-com";
+import useMessage from "@/utils/hooks/useMessage";
+import { useState } from "react";
 
 const LeafletMap = dynamic(() => import("@/components/shared/map/map"), {
     ssr: false,
 });
+
+
+export const sendContactEmail = async (data: any) => {
+    const templateParams = {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        email: data.email,
+        phoneNo: data.phoneNo,
+        message: data.message,
+    };
+
+    try {
+        await emailjs.send(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID_CONTACT!,
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_CONTACT!,
+            templateParams,
+            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY_CONTACT!
+        );
+
+        console.log("Contact email sent successfully!");
+    } catch (error) {
+        console.log("Contact email error:", error);
+    }
+};
+
 
 const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -32,10 +60,28 @@ const prefixSelector = (
 export default function ContactUs() {
 
     const [form] = Form.useForm();
+    const { successMsg, errorMsg, contextHolder } = useMessage();
+    const [loading, setLoading] = useState(false);
 
-    const onFinish = (values: any) => {
-        console.log(values)
-    }
+    const onFinish = async (values: any) => {
+        try {
+            setLoading(true)
+            await sendContactEmail({
+                firstName: values.firstName,
+                lastName: values.lastName,
+                email: values.email,
+                phoneNo: values.phoneNo,
+                message: values.message,
+            });
+            successMsg("Thanks for contacting! We'll reach out to you shortly");
+            form.resetFields();
+        } catch (err) {
+            console.error(err);
+        } finally{
+            setLoading(false);
+        }
+    };
+
 
     const contactInfo = [
         {
@@ -50,21 +96,21 @@ export default function ContactUs() {
         },
         {
             icon: <FiMapPin className="w-8 h-8" />,
-            title: "Our Karachi Address",
+            title: "Karachi Address",
             details: [
                 "B-103 1st Floor Fortune Towers Plot No. 43 1-A Main, Shahrah-e-Faisal Block 6 P.E.C.H.S., Karachi, 75400, Pakistan",
             ],
         },
         {
             icon: <FiMapPin className="w-8 h-8" />,
-            title: "Our Lahore Address",
+            title: "Lahore Address",
             details: [
                 "24, 1st Floor, Al Hafeez View, 67/D-1, Gulberg III Lahore-54000",
             ],
         },
         {
             icon: <FiMapPin className="w-8 h-8" />,
-            title: "Our Islamabad Address",
+            title: "Islamabad Address",
             details: [
                 "305, 3rd Floor, Emirates Tower, M-13, F-7 Markaz, Islamabad, 44000",
             ],
@@ -74,6 +120,7 @@ export default function ContactUs() {
 
     return (
         <section className="flex flex-col gap-3 justify-start min-h-screen bg-[#F2F2F5]">
+            {contextHolder}
             <Banner title="Contact Us" content="Stay ahead of tomorrow's cyber security threats with the right tools from innovative integration." />
             <section className="container mx-auto px-4 md:py-11! flex flex-col gap-8">
                 {/* Section Header */}
@@ -210,15 +257,16 @@ export default function ContactUs() {
 
                             {/* Submit Button */}
                             <div className="flex items-center justify-center">
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    type="submit"
-                                    className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-cyan-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                <Button
+                                    // whileHover={{ scale: 1.05 }}
+                                    // whileTap={{ scale: 0.95 }}
+                                    loading={loading}
+                                    htmlType="submit"
+                                    className="inline-flex items-center gap-2 px-8 py-10 bg-white! text-blue-900! font-semibold rounded-lg hover:bg-cyan-50 transition-all duration-300 shadow-lg hover:shadow-xl h-14! w-2/4"
                                 >
                                     Send Message
                                     <FiArrowRight className="w-5 h-5" />
-                                </motion.button>
+                                </Button>
                             </div>
                         </Form>
                     </div>

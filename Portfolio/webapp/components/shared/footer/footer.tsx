@@ -68,7 +68,7 @@ const Footer = () => {
                             </li>
                             <li className='flex items-center gap-3'>
                                 <IoMdMail />
-                                Info@Innovative.com
+                                info@innovativeintegration.net
                             </li>
 
                         </ul>

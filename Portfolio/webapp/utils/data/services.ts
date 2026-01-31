@@ -361,12 +361,12 @@ export const services = [
                         content: "Automate the auditing and reporting of security policies on every endpoint, making it easier to meet rigorous regulatory and internal compliance standards."
                     }
                 ],
-                technology: [
+                "technology": [
                     {
-                        id: 1,
-                        title: "Palo Alto Networks",
-                        img: paloalto,
-                        content: "We partner with industry leaders like Palo Alto Networks to deliver top-tier NAC solutions that provide comprehensive visibility and control over every device on your network."
+                        "id": 1,
+                        "title": "Forescout",
+                        "img": paloalto,
+                        "content": "We are partners with Forescout, a leader in the Network Access Control space, and deploy their solutions to provide comprehensive visibility and control. Our expertise in implementing Forescout's platform ensures every device on your network is discovered, classified, and secured without requiring agents, enabling true zero-trust security for all devices including IT, IoT, and operational technology."
                     }
                 ],
                 useCases: [
@@ -461,7 +461,7 @@ export const services = [
                         id: 1,
                         title: "RSA",
                         img: f5,
-                        content: "A leader in identity and access management, known for its robust 2-Factor Authentication solutions that provide a powerful, extra layer of security beyond a simple password."
+                        content: "RSA IAM is a comprehensive Identity and Access Management (IAM) solution with built-in two-factor authentication (2FA), enabling organizations to securely manage user identities and control access to critical systems. It ensures only authorized users can access resources while maintaining strong security and a smooth user experience."
                     },
                     {
                         id: 2,
@@ -567,10 +567,16 @@ export const services = [
                 ],
                 technology: [
                     {
-                        id: 1,
-                        title: "Hardware/Software ADCs",
-                        img: f5,
-                        content: "We are experts in deploying comprehensive solutions from F5 BIG-IP, which offer a full suite of services for application delivery, security, and performance."
+                        "id": 1,
+                        "title": "F5",
+                        "img": f5,
+                        "content": "We are certified partners of F5 and deploy their comprehensive BIG-IP ADC solutions. Our expertise in implementing F5's industry-leading load balancers ensures your applications benefit from advanced traffic management, SSL offloading, and web application firewall capabilities for optimal performance and security."
+                    },
+                    {
+                        "id": 2,
+                        "title": "Fortinet",
+                        "img": fortniet,
+                        "content": "As authorized Fortinet partners, we implement their FortiADC application delivery controllers. Our deployment of Fortinet's solutions provides integrated security and application delivery with advanced load balancing, DDoS protection, and SSL inspection capabilities for high-performance application delivery with built-in security."
                     }
                 ],
                 useCases: [
@@ -1549,18 +1555,18 @@ export const services = [
                         content: "Maximize the value of your existing hardware by running multiple workloads on a single server, which prevents underutilization and optimizes your IT investments."
                     }
                 ],
-                technology: [
+                "technology": [
                     {
-                        id: 1,
-                        title: "VMware",
-                        img: f5,
-                        content: "As the industry-standard hypervisor, VMware provides a comprehensive and mature virtualization platform for a broad range of enterprise environments."
+                        "id": 1,
+                        "title": "VMware",
+                        "img": f5,
+                        "content": "We are certified VMware partners and deploy their industry-standard virtualization platform. Our expertise in implementing VMware solutions ensures you benefit from a comprehensive and mature virtualization environment for a broad range of enterprise applications and workloads."
                     },
                     {
-                        id: 2,
-                        title: "Nutanix",
+                        "id": 2,
+                        "title": "Red Hat OpenShift",
                         img: f5,
-                        content: "A leader in hyper-converged infrastructure (HCI), Nutanix simplifies the entire IT stack by integrating compute, storage, and networking into a single, easy-to-manage platform."
+                        "content": "As Red Hat partners, we implement their OpenShift platform for container-based virtualization and workload management. Our deployment of OpenShift provides a powerful, enterprise-grade platform for running containerized applications alongside traditional virtual machines."
                     }
                 ],
                 useCases: [

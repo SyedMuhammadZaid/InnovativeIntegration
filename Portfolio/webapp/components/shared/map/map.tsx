@@ -24,10 +24,13 @@ export default function LeafletMap({ lat = 33.6844, lng = 73.0479 }) {
             className="w-full h-full"
             style={{ minHeight: "400px" }}
         >
-            <TileLayer
-                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
-                attribution="Tiles © Esri"
-            />
+            {
+                TileLayer &&
+                <TileLayer
+                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+                    attribution="Tiles © Esri"
+                />
+            }
             <Marker position={position} icon={icon}>
                 <Popup>
                     <div className="text-center">

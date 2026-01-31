@@ -94,7 +94,7 @@ export default function Projects({ params }: { params: { id: string } }) {
                             <h2 className="text-xl font-semibold">{activeProject?.clientName}</h2>
                         </div>
                         <div className="service-tab-listing-item bg-white rounded-bl-xl rounded-br-xl">
-                            <Image src={project2} alt="project" width={200} height={200} className="w-full object-cover h-[300px] rounded-tl-xl rounded-tr-xl" />
+                            <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${activeProject?.imageUrl}`} alt="project" width={200} height={200} className="w-full object-cover h-[300px] rounded-tl-xl rounded-tr-xl" />
                             <div className="px-5 py-7 flex flex-col gap-5">
                                 <div className="flex flex-col gap-2">
                                     <h2 className="text-2xl font-bold primary-text-color">Challenge</h2>
