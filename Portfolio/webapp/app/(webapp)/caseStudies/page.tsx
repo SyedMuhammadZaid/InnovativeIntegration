@@ -105,69 +105,75 @@ export default function CaseStudies() {
 
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    {caseStudies?.map((caseStudy: any, index) => {
-                        const industry = caseStudy?.industry || "Banking"
-                        const gradientColor = getIndustryColor(industry)
+                    {
+                        caseStudies.length > 0 ?
+                            caseStudies?.map((caseStudy: any, index) => {
+                                const industry = caseStudy?.industry || "Banking"
+                                const gradientColor = getIndustryColor(industry)
 
-                        return (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.05, duration: 0.5 }}
-                                viewport={{ once: true }}
-                                className="group cursor-pointer"
-                                onClick={() => caseStudiesRedirectHandler(caseStudy)}
-                            >
-                                <div className="relative h-[350px] rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
-                                    {/* Image Container with Overlay */}
-                                    <div className="relative h-48 overflow-hidden">
-                                        <Image
-                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${caseStudy?.imageUrl}`} alt={caseStudy?.clientName}
-                                            width={400}
-                                            height={300}
-                                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                                        />
+                                return (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.05, duration: 0.5 }}
+                                        viewport={{ once: true }}
+                                        className="group cursor-pointer"
+                                        onClick={() => caseStudiesRedirectHandler(caseStudy)}
+                                    >
+                                        <div className="relative h-[350px] rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                                            {/* Image Container with Overlay */}
+                                            <div className="relative h-48 overflow-hidden">
+                                                <Image
+                                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${caseStudy?.imageUrl}`} alt={caseStudy?.clientName}
+                                                    width={400}
+                                                    height={300}
+                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                                />
 
-                                        {/* Hover Arrow */}
-                                        <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300 shadow-lg">
-                                            <FiArrowRight className="w-5 h-5 text-cyan-600" />
-                                        </div>
-                                    </div>
-
-                                    {/* Content Container */}
-                                    <div className="px-4 py-4 flex flex-col gap-1">
-                                        {/* Client Name */}
-                                        <h3 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 truncate">
-                                            {caseStudy?.clientName}
-                                        </h3>
-
-                                        {/* Title */}
-                                        <p className="text-gray-700 text-sm line-clamp-2 flex-grow leading-relaxed">
-                                            {caseStudy?.title}
-                                        </p>
-
-                                        {/* Meta Info */}
-                                        <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-                                            <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                                                <FiCalendar className="w-3.5 h-3.5" />
-                                                <span>{dayjs(caseStudy?.updatedAt)?.format('MMM DD, YYYY') || "2024"}</span>
+                                                {/* Hover Arrow */}
+                                                <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300 shadow-lg">
+                                                    <FiArrowRight className="w-5 h-5 text-cyan-600" />
+                                                </div>
                                             </div>
-                                            <div className="text-xs font-semibold text-cyan-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                View Details
-                                                <FiArrowRight className="w-3.5 h-3.5" />
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    {/* Bottom Accent Line */}
-                                    <div
-                                        className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
-                                    ></div>
-                                </div>
-                            </motion.div>
-                        )
-                    })}
+                                            {/* Content Container */}
+                                            <div className="px-4 py-4 flex flex-col gap-1">
+                                                {/* Client Name */}
+                                                <h3 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 truncate">
+                                                    {caseStudy?.clientName}
+                                                </h3>
+
+                                                {/* Title */}
+                                                <p className="text-gray-700 text-sm line-clamp-2 flex-grow leading-relaxed">
+                                                    {caseStudy?.title}
+                                                </p>
+
+                                                {/* Meta Info */}
+                                                <div className="flex items-center justify-between border-t border-gray-100 pt-4">
+                                                    <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                                                        <FiCalendar className="w-3.5 h-3.5" />
+                                                        <span>{dayjs(caseStudy?.updatedAt)?.format('MMM DD, YYYY') || "2024"}</span>
+                                                    </div>
+                                                    <div className="text-xs font-semibold text-cyan-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                        View Details
+                                                        <FiArrowRight className="w-3.5 h-3.5" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Bottom Accent Line */}
+                                            <div
+                                                className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
+                                            ></div>
+                                        </div>
+                                    </motion.div>
+                                )
+                            })
+                            :
+                            <div className="col-span-full text-center py-12">
+                                <p className="text-gray-500 text-lg">No Case Studies available at the moment</p>
+                            </div>}
                 </div>
 
 

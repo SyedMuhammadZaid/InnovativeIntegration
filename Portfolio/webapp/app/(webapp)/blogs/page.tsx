@@ -69,6 +69,7 @@ export default function Blogs() {
                 </motion.div>
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 md:mx-0 mx-auto">
                     {
+                        blogs?.length > 0 ?
                         blogs.map((blog, index) => {
                             return (
                                 <motion.div
@@ -131,6 +132,10 @@ export default function Blogs() {
                                 </motion.div>
                             )
                         })
+                        :
+                        <div className="col-span-full text-center py-12">
+                        <p className="text-gray-500 text-lg">No Blogs available at the moment</p>
+                    </div>
                     }
                 </div>
                 <div>
