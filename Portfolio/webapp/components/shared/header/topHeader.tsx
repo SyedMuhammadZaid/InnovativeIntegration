@@ -13,8 +13,10 @@ const TopHeader = () => {
                     <Link href={'/careers'} className='smooth-scaling-text'>Careers</Link>
                     <span> / </span>
                     <section className='flex items-center gap-2'>
-                        <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon' />
-                        <FaSquareXTwitter size={21} className='cursor-pointer smooth-scaling-icon' />
+                        <Link href={'https://www.linkedin.com/company/innovative-integration-pvt-limited/posts/?feedView=all'} target='_blank'>
+                            <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon' />
+                        </Link>
+                        {/* <FaSquareXTwitter size={21} className='cursor-pointer smooth-scaling-icon' /> */}
                     </section>
                 </section>
             </section>

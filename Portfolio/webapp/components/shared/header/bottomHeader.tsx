@@ -101,15 +101,17 @@ const BottomHeader = () => {
         window.open("https://myiipl.on.spiceworks.com/portal/registrations", "_blank");
     }
 
-    const homeRedirectHandler = () => {
-        router.push('/')
-    }
+    // const homeRedirectHandler = () => {
+    //     router.push('/')
+    // }
 
     return (
         <header className='w-full py-2'>
             <section className='container flex items-center justify-between'>
                 <section>
-                    <Image onClick={homeRedirectHandler} src={Logo} alt='logo' priority width={150} height={150} className='w-[110px] cursor-pointer' />
+                    <Link href={'/'}>
+                        <Image  src={Logo} alt='logo' priority width={150} height={150} className='w-[110px] cursor-pointer' />
+                    </Link>
                 </section>
                 {/* for large devices view */}
                 <nav className='hidden lg:block'>

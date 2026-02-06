@@ -24,11 +24,13 @@ const Footer = () => {
                     />
                     <div className='flex gap-4'>
                         <div className='rounded-full p-2 flex items-center justify-center border border-white'>
-                            <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon' color='white' />
+                            <Link href={'https://www.linkedin.com/company/innovative-integration-pvt-limited/posts/?feedView=all'} target='_blank'>
+                                <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon' color='white' />
+                            </Link>
                         </div>
-                        <div className='rounded-full p-2 flex items-center justify-center border border-white'>
+                        {/* <div className='rounded-full p-2 flex items-center justify-center border border-white'>
                             <FaSquareXTwitter size={20} className='cursor-pointer smooth-scaling-icon' color='white' />
-                        </div>
+                        </div> */}
                     </div>
                 </section>
                 <div className='h-[1px] opacity-25 w-full bg-white'></div>

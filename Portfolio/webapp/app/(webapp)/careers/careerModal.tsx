@@ -27,26 +27,6 @@ export default function CareerApplicationModal({
 
     const [form] = Form.useForm();
 
-    // File validation
-    const validateFile = (_: any, value: any) => {
-        if (!value || value.length === 0) {
-            return Promise.reject("CV is required");
-        }
-
-        const file = value[0].originFileObj;
-        const allowed = [
-            "application/pdf",
-            "application/msword",
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        ];
-
-        if (!allowed.includes(file.type)) {
-            return Promise.reject("Only PDF or Word files are allowed.");
-        }
-
-        return Promise.resolve();
-    };
-
     // Send email using sendForm
     const handleFinish = async () => {
         setLoading(true);
@@ -117,17 +97,17 @@ export default function CareerApplicationModal({
                         {/* First Name / Last Name / Email / Message / Resume */}
                         <div className="grid grid-cols-2 gap-4">
                             <Form.Item
-                                name="firstName"
+                                name="first_name"
                                 rules={[{ required: true, message: "First name is required" }]}
                             >
-                                <Input placeholder="First Name" size="large" />
+                                <Input name="first_name" placeholder="First Name" size="large" />
                             </Form.Item>
 
                             <Form.Item
-                                name="lastName"
+                                name="last_name"
                                 rules={[{ required: true, message: "Last name is required" }]}
                             >
-                                <Input placeholder="Last Name" size="large" />
+                                <Input name="last_name" placeholder="Last Name" size="large" />
                             </Form.Item>
                         </div>
 
@@ -136,23 +116,41 @@ export default function CareerApplicationModal({
                                 name="email"
                                 rules={[{ required: true, message: "Email is required" }]}
                             >
-                                <Input type="email" placeholder="Email" size="large" />
+                                <Input type="email" name="email" placeholder="Email" size="large" />
                             </Form.Item>
 
                             <Form.Item
-                                name="resume"
-                                valuePropName="fileList"
-                                getValueFromEvent={(e) => e.fileList}
-                                rules={[{ validator: validateFile }]}
+                                name="resumeUrl"
+                                rules={[
+                                    { required: true, message: "Resume URL is required" },
+                                    {
+                                        validator: (_, value) => {
+                                            if (!value) return Promise.reject("Resume URL is required");
+
+                                            try {
+                                                new URL(value.trim());
+                                                return Promise.resolve();
+                                            } catch {
+                                                return Promise.reject("Enter a valid URL");
+                                            }
+                                        }
+                                    }
+                                ]}
                             >
-                                <Upload
-                                    beforeUpload={() => false}
-                                    accept=".pdf,.doc,.docx"
-                                    maxCount={1}
-                                >
-                                    <Button icon={<UploadOutlined />}>Upload CV</Button>
-                                </Upload>
+                                <Input
+                                    name="resumeUrl"   // ✅ IMPORTANT
+                                    placeholder="Paste Resume URL (Google Drive, Dropbox, Portfolio, etc.)"
+                                    size="large"
+                                    onBlur={(e) => {
+                                        form.setFieldsValue({ resumeUrl: e.target.value.trim() });
+                                    }}
+                                />
+
+                                <small className="text-xs text-gray-500 mt-1">
+                                    Paste a public Google Drive / Dropbox / Portfolio resume link
+                                </small>
                             </Form.Item>
+
                         </div>
 
                         <Form.Item
@@ -163,9 +161,12 @@ export default function CareerApplicationModal({
                             <Input.TextArea
                                 placeholder="Why you want to join us."
                                 rows={4}
+                                name="message"
                                 className="rounded-xl"
                             />
+
                         </Form.Item>
+
 
                         <div className="mt-6 flex justify-start">
                             <Button
