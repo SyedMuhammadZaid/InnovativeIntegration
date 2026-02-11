@@ -20,3 +20,5 @@ export const ParentLayerProjectsMappingDescription: any = {
 
     "6": "Advanced load balancing solutions that route traffic across geographically distributed servers to enhance global availability, reduce latency, and provide high fault tolerance."
 };
+
+export const AdminPanelUrl = "https://admin-panel-production-62fb.up.railway.app"

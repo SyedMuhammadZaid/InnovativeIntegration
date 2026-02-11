@@ -11,6 +11,7 @@ import { useLoader } from "@/components/shared/loadingContext/loaderContext";
 import Link from "next/link";
 import { FiArrowRight, FiCalendar, FiUser } from "react-icons/fi";
 import dayjs from "dayjs";
+import { AdminPanelUrl } from "@/utils/constants";
 
 export default function Blogs() {
 
@@ -85,7 +86,7 @@ export default function Blogs() {
                                             {/* Image Container */}
                                             <div className="relative h-56 overflow-hidden">
                                                 <Image
-                                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${blog?.previewImageUrl}`}
+                                                    src={`${AdminPanelUrl}${blog?.previewImageUrl}`}
                                                     alt={blog?.previewHeading}
                                                     width={400}
                                                     height={300}

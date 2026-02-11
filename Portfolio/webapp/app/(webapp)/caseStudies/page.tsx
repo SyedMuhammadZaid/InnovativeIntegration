@@ -10,6 +10,7 @@ import { getCaseStudies } from "@/utils/apis/caseStudies";
 import CustomPagination from "@/components/shared/pagination/pagination";
 import { FiArrowRight, FiCalendar, FiTag } from "react-icons/fi";
 import dayjs from "dayjs";
+import { AdminPanelUrl } from "@/utils/constants";
 
 export default function CaseStudies() {
 
@@ -125,7 +126,7 @@ export default function CaseStudies() {
                                             {/* Image Container with Overlay */}
                                             <div className="relative h-48 overflow-hidden">
                                                 <Image
-                                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${caseStudy?.imageUrl}`} alt={caseStudy?.clientName}
+                                                    src={`${AdminPanelUrl}${caseStudy?.imageUrl}`} alt={caseStudy?.clientName}
                                                     width={400}
                                                     height={300}
                                                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"

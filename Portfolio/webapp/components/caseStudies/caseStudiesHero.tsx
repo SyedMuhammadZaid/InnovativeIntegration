@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import project2 from "@/assets/images/project-2.png"
 import Image from "next/image"
+import { AdminPanelUrl } from "@/utils/constants"
 
 export default function CaseStudyHero({ content }: any) {
     return (
@@ -24,7 +25,7 @@ export default function CaseStudyHero({ content }: any) {
             {/* Banner Image */}
             <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500" />
-                <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${content?.imageUrl}`} alt="caseStudyImg" width={400} height={400} className="w-full h-64 object-cover opacity-90" />
+                <Image src={`${AdminPanelUrl}${content?.imageUrl}`} alt="caseStudyImg" width={400} height={400} className="w-full h-64 object-cover opacity-90" />
             </div>
         </motion.section>
     )

@@ -20,6 +20,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import Link from "next/link";
 import project2 from "@/assets/images/project-2.png"
 import emailjs from "emailjs-com";
+import { AdminPanelUrl } from "@/utils/constants";
 
 
 const prefixSelector = (
@@ -202,7 +203,7 @@ export default function Events() {
                                                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-fit mx-auto sm:mx-0"
                                             >
                                                 <div className="relative col-span-1">
-                                                    <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${upcomingEvent?.imageUrl}`} alt="eventThumbnail" width={500} height={500} className="w-[420px] h-[420px] object-center object-cover rounded-xl cursor-pointer" />
+                                                    <Image src={`${AdminPanelUrl}${upcomingEvent?.imageUrl}`} alt="eventThumbnail" width={500} height={500} className="w-[420px] h-[420px] object-center object-cover rounded-xl cursor-pointer" />
                                                     <div className="absolute bottom-0 left-0">
                                                         <motion.div
                                                             key={upcomingEvent?.id}
@@ -293,7 +294,7 @@ export default function Events() {
                                             <Link href={`/events/${String(event?.id)}`}>
                                                 <div className="relative w-[300px] md:w-[250px] h-[300px]">
                                                     <div className="absolute top-0 left-0 w-full h-full z-10">
-                                                        <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL_PREFIX}${event?.imageUrl}`} alt="eventImg" width={400} height={400} className="object-cover w-full h-full rounded-2xl" />
+                                                        <Image src={`${AdminPanelUrl}${event?.imageUrl}`} alt="eventImg" width={400} height={400} className="object-cover w-full h-full rounded-2xl" />
                                                     </div>
 
                                                     <div className="absolute w-full h-full z-20 blogcard-layer opacity-30 rounded-2xl object-cover" />
