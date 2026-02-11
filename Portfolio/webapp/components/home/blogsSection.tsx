@@ -100,7 +100,7 @@ export default function BlogSection() {
                                         {/* Image Container */}
                                         <div className="relative h-56 overflow-hidden">
                                             <Image
-                                                src={`https://admin-panel-production-62fb.up.railway.app${blog?.previewImageUrl}`}
+                                                src={`${AdminPanelUrl}${blog?.previewImageUrl}`}
                                                 alt={blog?.previewHeading}
                                                 width={400}
                                                 height={300}
