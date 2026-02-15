@@ -11,6 +11,7 @@ import { useLoader } from "@/components/shared/loadingContext/loaderContext";
 import Link from "next/link";
 import { FiArrowRight, FiCalendar, FiUser } from "react-icons/fi";
 import dayjs from "dayjs";
+import { AdminPanelUrl } from "@/utils/constants";
 
 export default function Blogs() {
 
@@ -69,6 +70,7 @@ export default function Blogs() {
                 </motion.div>
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 md:mx-0 mx-auto">
                     {
+                        blogs?.length > 0 ?
                         blogs.map((blog, index) => {
                             return (
                                 <motion.div
@@ -84,7 +86,7 @@ export default function Blogs() {
                                             {/* Image Container */}
                                             <div className="relative h-56 overflow-hidden">
                                                 <Image
-                                                    src={`https://innovativeintegration-production-0f11.up.railway.app${blog?.previewImageUrl}`}
+                                                    src={`${AdminPanelUrl}${blog?.previewImageUrl}`}
                                                     alt={blog?.previewHeading}
                                                     width={400}
                                                     height={300}
@@ -131,6 +133,10 @@ export default function Blogs() {
                                 </motion.div>
                             )
                         })
+                        :
+                        <div className="col-span-full text-center py-12">
+                        <p className="text-gray-500 text-lg">No Blogs available at the moment</p>
+                    </div>
                     }
                 </div>
                 <div>

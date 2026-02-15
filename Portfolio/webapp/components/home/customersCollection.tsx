@@ -7,12 +7,16 @@ import { MdScreenshotMonitor } from "react-icons/md";
 import * as motion from "motion/react-client";
 import alfalah from "@/assets/images/customers/bank/Alfalah.png"
 import hbl from "@/assets/images/customers/bank/hbl.png"
-import meezan from "@/assets/images/customers/bank/Alfalah.png"
+import meezan from "@/assets/images/customers/bank/meezan.png"
 import oneLink from "@/assets/images/customers/bank/oneLink.png"
 import standard from "@/assets/images/customers/bank/standard.jpg"
 import ubl from "@/assets/images/customers/bank/ubl.png"
 import KE from "@/assets/images/customers/oil/KE.png"
 import parco from "@/assets/images/customers/oil/parco.png"
+import engro from "@/assets/images/customers/oil/engro.png"
+import energy_uep from "@/assets/images/customers/oil/energy_uep.png"
+import molEnergy from "@/assets/images/customers/oil/molEnergy.jpg"
+
 import pso from "@/assets/images/customers/oil/pso.png"
 import SSGC from "@/assets/images/customers/oil/SSGC.png"
 import jazz from "@/assets/images/customers/telecommunication/jazz.png"
@@ -38,21 +42,22 @@ const bankItems = [
         id: 2,
         image: hbl
     },
+
     {
         id: 3,
-        image: meezan
-    },
-    {
-        id: 4,
         image: oneLink
     },
     {
-        id: 5,
+        id: 4,
         image: standard
     },
     {
-        id: 6,
+        id: 5,
         image: ubl
+    },
+    {
+        id: 6,
+        image: meezan
     },
 ]
 
@@ -63,15 +68,15 @@ const oilItems = [
     },
     {
         id: 2,
-        image: parco
+        image: engro
     },
     {
         id: 3,
-        image: pso
+        image: energy_uep
     },
     {
         id: 4,
-        image: SSGC
+        image: molEnergy
     }
 ]
 
@@ -99,10 +104,10 @@ const logistics = [
         id: 1,
         image: dp
     },
-    {
-        id: 2,
-        image: kict
-    },
+    // {
+    //     id: 2,
+    //     image: kict
+    // },
     // {
     //     id: 3,
     //     image: south
@@ -211,7 +216,7 @@ const CustomersCollection = () => {
                                 ))}
                             </motion.div>
                             <p className='text-center mt-7'>
-                                <PrimaryButton text='Show more' className='primary-btn py-1!' onClick={() => router.push('/customers')}/>
+                                <PrimaryButton text='Show more' className='primary-btn py-1!' onClick={() => router.push('/customers')} />
                             </p>
                         </AnimatePresence>
                     ),

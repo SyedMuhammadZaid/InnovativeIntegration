@@ -14,6 +14,7 @@ import { useLoader } from "../shared/loadingContext/loaderContext"
 import dayjs from "dayjs"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { AdminPanelUrl } from "@/utils/constants"
 
 const blogPosts = [
     {
@@ -99,7 +100,7 @@ export default function BlogSection() {
                                         {/* Image Container */}
                                         <div className="relative h-56 overflow-hidden">
                                             <Image
-                                                src={`https://innovativeintegration-production-0f11.up.railway.app${blog?.previewImageUrl}`}
+                                                src={`${AdminPanelUrl}${blog?.previewImageUrl}`}
                                                 alt={blog?.previewHeading}
                                                 width={400}
                                                 height={300}

@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 
 interface Logo {
     name: string
-    image: string
+    image: string,
+    link: string,
 }
 
 interface IndustrySectionProps {
@@ -57,13 +59,25 @@ export default function IndustrySection({
                             whileHover={{ scale: 1.05, y: -5 }}
                             className="bg-white rounded-lg p-8 flex items-center justify-center shadow-md hover:shadow-xl transition-all duration-300 aspect-square"
                         >
-                            <Image
-                                src={logo.image || "/placeholder.svg"}
-                                alt={logo.name}
-                                width={150}
-                                height={150}
-                                className="w-auto h-auto max-w-full max-h-[80px] object-contain"
-                            />
+                            {logo?.link ?
+                                <Link href={logo?.link || ''} target="_blank">
+                                    <Image
+                                        src={logo.image || "/placeholder.svg"}
+                                        alt={logo.name}
+                                        width={150}
+                                        height={150}
+                                        className="w-auto h-auto max-w-full max-h-[80px] object-contain"
+                                    />
+                                </Link>
+                                :
+                                <Image
+                                    src={logo.image || "/placeholder.svg"}
+                                    alt={logo.name}
+                                    width={150}
+                                    height={150}
+                                    className="w-auto h-auto max-w-full max-h-[80px] object-contain cursor-pointer!"
+                                />
+                            }
                         </motion.div>
                     ))}
                 </div>

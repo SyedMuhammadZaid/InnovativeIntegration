@@ -24,11 +24,13 @@ const Footer = () => {
                     />
                     <div className='flex gap-4'>
                         <div className='rounded-full p-2 flex items-center justify-center border border-white'>
-                            <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon' color='white' />
+                            <Link href={'https://www.linkedin.com/company/innovative-integration-pvt-limited/posts/?feedView=all'} target='_blank'>
+                                <FaLinkedin size={20} className='cursor-pointer smooth-scaling-icon' color='white' />
+                            </Link>
                         </div>
-                        <div className='rounded-full p-2 flex items-center justify-center border border-white'>
+                        {/* <div className='rounded-full p-2 flex items-center justify-center border border-white'>
                             <FaSquareXTwitter size={20} className='cursor-pointer smooth-scaling-icon' color='white' />
-                        </div>
+                        </div> */}
                     </div>
                 </section>
                 <div className='h-[1px] opacity-25 w-full bg-white'></div>
@@ -57,15 +59,8 @@ const Footer = () => {
                             <li><Link href={'/'}>Professional Services</Link></li>
                         </ul>
                     </section>
+
                     {/* third section */}
-                    <section className='flex flex-col gap-3'>
-                        <p className='font-semibold text-base text-white'>Support</p>
-                        <ul className='flex flex-col gap-1 text-white font-light'>
-                            <li><Link href={'/'}>Contact Us</Link></li>
-                            <li><Link href={'/'}>Support Portal</Link></li>
-                        </ul>
-                    </section>
-                    {/* fourth section */}
                     <section className='flex flex-col gap-3'>
                         <p className='font-semibold text-base text-white'>Contact</p>
                         <ul className='flex flex-col gap-1 text-white font-light'>
@@ -75,11 +70,27 @@ const Footer = () => {
                             </li>
                             <li className='flex items-center gap-3'>
                                 <IoMdMail />
-                                Info@ Innovative.com
+                                info@innovativeintegration.net
                             </li>
-                            <li className='flex items-center gap-3'>
+
+                        </ul>
+                    </section>
+
+                    {/* fourth section */}
+                    <section className='flex flex-col gap-3'>
+                        <p className='font-semibold text-base text-white'>Addresses</p>
+                        <ul className='flex flex-col gap-1 text-white font-light'>
+                            <li className='flex items-start gap-3'>
                                 <FaLocationDot />
-                                2nd Floor, KDLB Building, 58 West Wharf Road, Karachi
+                                <span className='text-wrap max-w-[200px]'>Head-Quater: B-103 1st Floor Fortune Towers Main Shahrah-e-Faisal Karachi</span>
+                            </li>
+                            <li className='flex items-start gap-3'>
+                                <FaLocationDot />
+                                <span className='text-wrap max-w-[200px]'>24, 1st Floor, Al Hafeez View, 67/D-1, Gulberg III Lahore-54000</span>
+                            </li>
+                            <li className='flex items-start gap-3'>
+                                <FaLocationDot />
+                                <span className='text-wrap max-w-[200px]'>305, 3rd Floor, Emirates Tower, M-13, F-7 Markaz, Islamabad, 44000</span>
                             </li>
                         </ul>
                     </section>

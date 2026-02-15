@@ -22,10 +22,10 @@ const partners = [
         description: "United with industry-leading partners to strengthen your defense against cyber threats.",
         bgColor: "bg-gray-100",
         logos: [
-            { name: "fortniet", image: fortniet },
-            { name: "recordedFuture", image: recordedFuture },
-            { name: "netscout", image: netscout },
-            { name: "paloalto", image: paloalto },
+            { name: "fortniet", image: fortniet, link: "https://www.fortinet.com/" },
+            { name: "recordedFuture", image: recordedFuture, link: "https://www.recordedfuture.com/" },
+            { name: "netscout", image: netscout, link: "https://www.netscout.com/" },
+            { name: "paloalto", image: paloalto, link: "https://www.paloaltonetworks.com/" },
         ],
     },
     {
@@ -34,10 +34,10 @@ const partners = [
         bgColor: "bg-amber-600",
         textColor: "text-white",
         logos: [
-            { name: "cohesity", image: cohesity },
-            { name: "netapp", image: netapp },
-            { name: "vmware", image: vmware },
-            { name: "trilio", image: trilio },
+            { name: "cohesity", image: cohesity, link: "https://www.cohesity.com/" },
+            { name: "netapp", image: netapp, link: "https://www.netapp.com/" },
+            { name: "vmware", image: vmware, link: "https://www.vmware.com/" },
+            { name: "trilio", image: trilio, link: "https://trilio.io/" },
         ],
     },
     {
@@ -46,11 +46,11 @@ const partners = [
         bgColor: "bg-emerald-500",
         textColor: "text-white",
         logos: [
-            { name: "netscout", image: netscout },
-            { name: "paloalto", image: paloalto },
-            { name: "netapp", image: netapp },
-            { name: "forescout", image: forescout },
-            { name: "riverbad", image: riverbad },
+            { name: "netscout", image: netscout, link: "https://www.netscout.com/" },
+            { name: "paloalto", image: paloalto, link: "https://www.paloaltonetworks.com/" },
+            { name: "netapp", image: netapp, link: "https://www.netapp.com/" },
+            { name: "forescout", image: forescout, link: "https://www.forescout.com/" },
+            { name: "riverbad", image: riverbad, link: "https://www.riverbed.com/" },
         ],
     },
     {
@@ -60,10 +60,10 @@ const partners = [
         textColor: "text-white",
         logos: [
 
-            { name: "appDynamics", image: appDynamics },
-            { name: "datadog", image: datadog },
-            { name: "f5", image: f5 },
-            { name: "logrhythm", image: logrhythm },
+            { name: "appDynamics", image: appDynamics, link: "https://www.splunk.com/en_us/appdynamics-joins-splunk.html" },
+            { name: "datadog", image: datadog, link: "https://www.datadoghq.com/" },
+            { name: "f5", image: f5, link: "https://www.f5.com/" },
+            { name: "logrhythm", image: logrhythm, link: "https://docs.logrhythm.com/lrsiem/docs/" },
         ],
     },
 ]

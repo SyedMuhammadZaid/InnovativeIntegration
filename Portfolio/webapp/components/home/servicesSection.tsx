@@ -61,9 +61,9 @@ const services = [
 ]
 
 const stats = [
-    { value: 17, label: "Years Experience", image: counter1Fig },
-    { value: 1000, label: "Project Completed", image: counter2Fig },
-    { value: 600, label: "Happy Clients", image: counter3Fig },
+    { value: 19, label: "Years Experience", image: counter1Fig },
+    { value: 400, label: "Project Completed", image: counter2Fig },
+    { value: 50, label: "Happy Clients", image: counter3Fig },
 ]
 
 export default function ServicesSection() {

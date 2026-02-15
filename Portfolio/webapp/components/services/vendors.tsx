@@ -6,7 +6,7 @@ import { FiServer, FiCloud } from "react-icons/fi"
 
 const icons = [FiServer, FiCloud, FiServer, FiCloud, FiServer, FiCloud];
 
-export default function VendorsSection({ content }: { content: any }) {
+export default function VendorsSection({ content, title }: { content: any, title: string }) {
 
     const [modifedContent, setModifiedContent] = useState<any[]>([])
 
@@ -43,7 +43,7 @@ export default function VendorsSection({ content }: { content: any }) {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 className="section-description text-lg"
             >
-                We partner with two of the most trusted names in the cybersecurity industry:
+                We partner {modifedContent?.length > 1 ? "with most trusted names" : "with one of the most trusted name"} in the {title ?? "-"} industry:
             </motion.p>
 
             <div className="grid md:grid-cols-2 gap-8">

@@ -16,7 +16,7 @@ const nextConfig = {
           // Production: Point to your Railway admin-panel
           {
             protocol: "https",
-            hostname: "innovativeintegration-production-0f11.up.railway.app",
+            hostname: "admin-panel-production-62fb.up.railway.app",
             pathname: "/api/uploads/**",
           },
           // Optional: Add your custom domain if you have one

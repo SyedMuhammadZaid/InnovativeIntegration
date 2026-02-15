@@ -16,6 +16,9 @@ const jakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Innovative Integration",
   description: "Company Portfolio Website",
+  icons:{
+    icon:"/tabLogo.PNG"
+  }
 };
 
 export default function RootLayout({

@@ -12,14 +12,23 @@ import bankAlhabib from "../../../assets/images/AllCustomers/bankAlHabib.png"
 import habibMetro from "../../../assets/images/AllCustomers/habibMetro.jpg"
 import deutsche from "../../../assets/images/AllCustomers/deutsche.png"
 import ubank from "../../../assets/images/AllCustomers/Ubank.jpg"
+import dubai from "../../../assets/images/AllCustomers/dubai_Islamic.jpg"
+import hblMicro from "../../../assets/images/AllCustomers/hblMicro.jpg"
+import meezan from "../../../assets/images/AllCustomers/meezan.png"
 import nrsp from "../../../assets/images/AllCustomers/nrsp.png"
 import mobilink from "../../../assets/images/AllCustomers/mobilink.jpg"
 import jsbank from "../../../assets/images/AllCustomers/jsbank.png"
+import soneri from "../../../assets/images/AllCustomers/soneri.png"
+import oneLink from "../../../assets/images/AllCustomers/oneLink.png"
 import khushaliBank from "../../../assets/images/AllCustomers/khushaliBank.jpg"
+import bankAlfalah from "../../../assets/images/AllCustomers/bankAlfalah.png"
+import mashreq from "../../../assets/images/AllCustomers/mashreqBank.png"
 import energyEni from "@/assets/images/AllCustomers/energy_eni.png"
 import energyKe from "@/assets/images/AllCustomers/energy_ke.png"
 import energyParco from "@/assets/images/AllCustomers/energy_parco.png"
 import energyPso from "@/assets/images/AllCustomers/energy_pso.png"
+import molEnergy from "@/assets/images/AllCustomers/molEnergy.jpg"
+import engro from "@/assets/images/AllCustomers/engro.png"
 import energySsgcl from "@/assets/images/AllCustomers/energy_ssgcl.png"
 import energySui from "@/assets/images/AllCustomers/energy_sui.png"
 import energyUep from "@/assets/images/AllCustomers/energy_uep.png"
@@ -41,8 +50,18 @@ import nielsen from "@/assets/images/AllCustomers/It_nielsen.png"
 import trg from "@/assets/images/AllCustomers/It_trg.png"
 import atlas from "@/assets/images/AllCustomers/other_atlas.png"
 import coca from "@/assets/images/AllCustomers/other_coca.png"
+import novartis from "@/assets/images/AllCustomers/novartis.jpg"
+import pepsiCola from "@/assets/images/AllCustomers/pepsiCola.jpg"
+import redbull from "@/assets/images/AllCustomers/redbull.png"
 import psel from "@/assets/images/AllCustomers/other_psel.png"
+import ebryx from "@/assets/images/AllCustomers/ebryx.jpg"
 import yamaha from "@/assets/images/AllCustomers/other_yamaha.png"
+import bentley from "@/assets/images/AllCustomers/bentley.png"
+import investInTrust from "@/assets/images/AllCustomers/investInTrust.png"
+import sindhBank from "@/assets/images/AllCustomers/sindhBank.jpg"
+import telenorBank from "@/assets/images/AllCustomers/telenorBank.jpg"
+import pakistanAirForce from "@/assets/images/AllCustomers/pakistanAirForce.jpg"
+import unitedStatesEducation from "@/assets/images/AllCustomers/unitedStatesEducation.png"
 import CtaSection from "@/components/shared/cta-banner/cta_Banner"
 
 export const metadata: Metadata = {
@@ -59,19 +78,25 @@ const industries = [
         logos: [
             { name: "HBL", image: hbl },
             { name: "UBL", image: ubl },
-            { name: "State Bank", image: stateBank },
+            { name: "soneri Bank", image: soneri },
             { name: "Standard Chartered", image: standardChartered },
-            { name: "Bank Alfalah", image: alfalah },
             { name: "BankIslami", image: bankIslami },
             { name: "MCB Bank", image: mcb },
             { name: "Bank AlHabib", image: bankAlhabib },
-            { name: "Habib Metro", image: habibMetro },
-            { name: "Deutsche Bank", image: deutsche },
+            { name: "stateBank", image: stateBank },
+            { name: "meezan Bank", image: meezan },
             { name: "UBank", image: ubank },
-            { name: "NRSP Microfinance", image: nrsp },
+            // { name: "NRSP Microfinance", image: nrsp },
             { name: "Mobilink Bank", image: mobilink },
-            { name: "JS Bank", image: jsbank },
+            { name: "dubai Bank", image: dubai },
+            { name: "hblMicro Bank", image: hblMicro },
             { name: "Khushhali Bank", image: khushaliBank },
+            { name: "oneLink Bank", image: oneLink },
+            { name: "bankAlfalah Bank", image: bankAlfalah },
+            { name: "mashreq Bank", image: mashreq },
+            // { name: "investInTrust Bank", image: investInTrust },
+            { name: "sindhBank Bank", image: sindhBank },
+            { name: "telenorBank Bank", image: telenorBank },
         ],
     },
     {
@@ -82,10 +107,10 @@ const industries = [
         logos: [
             { name: "Eni", image: energyEni },
             { name: "Ke", image: energyKe },
-            { name: "Parco", image: energyParco },
-            { name: "Pso", image: energyPso },
-            { name: "Ssgcl", image: energySsgcl },
-            { name: "Sui", image: energySui },
+            // { name: "Parco", image: energyParco },
+            // { name: "Pso", image: energyPso },
+            { name: "molEnergy", image: molEnergy },
+            { name: "engro", image: engro },
             { name: "Uep", image: energyUep },
         ],
     },
@@ -95,10 +120,10 @@ const industries = [
         bgColor: "bg-amber-400",
         textColor: "text-gray-900",
         logos: [
-            { name: "agha", image: pharmaAgha },
+            // { name: "agha", image: pharmaAgha },
             { name: "lums", image: pharmaLums },
-            { name: "merck", image: pharmaMerck },
-            { name: "pharmaUs", image: pharmaUs },
+            // { name: "novartis", image: novartis },
+            { name: "unitedStatesEducation", image: unitedStatesEducation },
         ],
     },
     {
@@ -121,8 +146,8 @@ const industries = [
         textColor: "text-white",
         logos: [
             { name: "dp", image: telecomDp },
-            { name: "kict", image: telecomKict },
-            { name: "sapt", image: telecomSapt },
+            // { name: "kict", image: telecomKict },
+            // { name: "sapt", image: telecomSapt },
             { name: "TCS", image: tcs },
         ],
     },
@@ -133,9 +158,9 @@ const industries = [
         textColor: "text-white",
         logos: [
             { name: "contour", image: contour },
-            { name: "mentor", image: mentor },
-            { name: "nielsen", image: nielsen },
-            { name: "trg", image: trg },
+            // { name: "bentley", image: bentley },
+            { name: "ebryx", image: ebryx },
+            // { name: "trg", image: trg },
         ],
     },
     {
@@ -146,8 +171,9 @@ const industries = [
         logos: [
             { name: "atlas", image: atlas },
             { name: "coca cola", image: coca },
-            { name: "psel", image: psel },
-            { name: "yamaha", image: yamaha },
+            { name: "redbull", image: redbull },
+            { name: "pepsiCola", image: pepsiCola },
+            // { name: "pakistanAirForce", image: pakistanAirForce },
         ],
     },
 ]

@@ -3,7 +3,7 @@
 import Banner from "@/components/shared/banner/banner";
 import { useLoader } from "@/components/shared/loadingContext/loaderContext";
 import { getSubProjects } from "@/utils/apis/project";
-import { ParentLayerProjectsMapping, ParentLayerProjectsMappingDescription } from "@/utils/constants";
+import { AdminPanelUrl, ParentLayerProjectsMapping, ParentLayerProjectsMappingDescription } from "@/utils/constants";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -64,7 +64,7 @@ export default function SubProjects({ params }: { params: { id: string } }) {
                                 >
                                     <div className="relative w-[250px] h-[300px] flex flex-col rounded-xl">
                                         <div className="w-full h-[60%]">
-                                            <Image src={`https://innovativeintegration-production-0f11.up.railway.app${project?.imageUrl}`} alt="eventImg" width={400} height={400} className="w-full h-full object-cover rounded-tl-xl rounded-tr-xl" />
+                                            <Image src={`${AdminPanelUrl}${project?.imageUrl}`} alt="eventImg" width={400} height={400} className="w-full h-full object-cover rounded-tl-xl rounded-tr-xl" />
                                         </div>
 
                                         <div className="h-full bg-white rounded-bl-2xl rounded-br-2xl p-3 flex flex-col gap-2 items-center justify-center w-full">
