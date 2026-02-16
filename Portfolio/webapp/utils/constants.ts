@@ -21,4 +21,6 @@ export const ParentLayerProjectsMappingDescription: any = {
     "6": "Advanced load balancing solutions that route traffic across geographically distributed servers to enhance global availability, reduce latency, and provide high fault tolerance."
 };
 
+// open the local one when working locally else the prod one.
 export const AdminPanelUrl = "https://admin-panel-production-62fb.up.railway.app"
+// export const AdminPanelUrl = "http://localhost:3000"

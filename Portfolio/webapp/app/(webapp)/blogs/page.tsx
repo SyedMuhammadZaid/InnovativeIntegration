@@ -68,7 +68,7 @@ export default function Blogs() {
                         </h2>
                     </div>
                 </motion.div>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 md:mx-0 mx-auto">
+                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:mx-0 mx-auto">
                     {
                         blogs?.length > 0 ?
                         blogs.map((blog, index) => {
