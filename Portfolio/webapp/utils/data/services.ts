@@ -527,6 +527,101 @@ export const services = [
                     }
                 ],
                 cta: "Ready to take control of your organization's access and identity? Contact us today for a consultation with our IAM experts."
+            },
+            {
+                "id": 6,
+                title: "Web Application Firewall (WAF)",
+                contentTitle: "Web Application Firewall (WAF) Solutions – Shield Your Applications from Cyber Threats",
+                contentTagLine: "Protect your critical web applications from attacks, vulnerabilities, and data breaches with intelligent security.",
+                what: "Your Application's First Line of Defense",
+                content: "A Web Application Firewall (WAF) is a security solution that monitors, filters, and blocks malicious HTTP/S traffic to and from your web applications. Unlike traditional firewalls that operate at the network level, a WAF specifically understands and protects against application-layer attacks such as SQL injection, cross-site scripting (XSS), and other OWASP Top 10 threats. In today's digital landscape where web applications are the primary interface with customers and partners, protecting them is non-negotiable. A WAF provides the critical protection needed to safeguard sensitive data, maintain customer trust, and ensure business continuity against constantly evolving application-layer attacks. We specialize in deploying these essential solutions, ensuring your business stays secure and resilient.",
+                benefits: [
+                    {
+                        "id": 1,
+                        "title": "Comprehensive Application Protection",
+                        "content": "Defend your web applications against OWASP Top 10 threats including SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF) with specialized security policies tailored to your application's unique traffic patterns."
+                    },
+                    {
+                        "id": 2,
+                        "title": "Zero-Day Attack Mitigation",
+                        "content": "Protect against unknown and emerging threats with virtual patching capabilities that shield vulnerabilities before official patches are available, reducing your window of exposure to zero-day attacks."
+                    },
+                    {
+                        "id": 3,
+                        "title": "Bot Mitigation and DDoS Protection",
+                        "content": "Identify and block malicious bot traffic, web scrapers, and application-layer DDoS attacks while ensuring legitimate user traffic flows uninterrupted to your applications."
+                    },
+                    {
+                        "id": 4,
+                        "title": "Regulatory Compliance",
+                        "content": "Meet compliance requirements for standards like PCI-DSS, HIPAA, and GDPR that mandate web application security controls, with comprehensive logging and reporting capabilities for audit readiness."
+                    }
+                ],
+                technology: [
+                    {
+                        "id": 1,
+                        "title": "F5",
+                        "img": f5,
+                        "content": "We are certified F5 partners and deploy their industry-leading Advanced WAF solutions. Our expertise in implementing F5's application security platform ensures your web applications benefit from comprehensive threat protection, bot defense, API security, and behavioral analytics, all delivered with the performance and reliability F5 is known for."
+                    }
+                ],
+                useCases: [
+                    {
+                        "id": 1,
+                        "title": "E-commerce and Retail",
+                        "content": "Protect customer payment data and personal information during online transactions by blocking application-layer attacks that target checkout processes, login pages, and customer databases."
+                    },
+                    {
+                        "id": 2,
+                        "title": "Financial Services and Banking",
+                        "content": "Secure online banking portals and financial applications with PCI-DSS compliant WAF solutions that prevent data breaches, account takeovers, and fraudulent transactions."
+                    },
+                    {
+                        "id": 3,
+                        "title": "Healthcare Portals",
+                        "content": "Safeguard patient portals and electronic health record (EHR) systems from application-layer attacks while maintaining HIPAA compliance and protecting sensitive patient information."
+                    }
+                ],
+                approach: [
+                    {
+                        "id": 1,
+                        "title": "Assess and Discover",
+                        "content": "We conduct a thorough assessment of your web applications to identify vulnerabilities, understand traffic patterns, and define security requirements specific to your application architecture."
+                    },
+                    {
+                        "id": 2,
+                        "title": "Design and Configure",
+                        "content": "We design a custom WAF implementation with security policies tailored to your applications, including positive and negative security models, rate limiting, and bot detection rules."
+                    },
+                    {
+                        "id": 3,
+                        "title": "Deploy and Integrate",
+                        "content": "Our certified engineers deploy the WAF solution with minimal disruption, configuring deployment modes (inline or out-of-band) that best suit your architecture and performance requirements."
+                    },
+                    {
+                        "id": 4,
+                        "title": "Monitor and Tune",
+                        "content": "We provide ongoing monitoring and policy tuning to reduce false positives, adapt to emerging threats, and ensure your WAF continues to provide optimal protection as your applications evolve."
+                    }
+                ],
+                faqs: [
+                    {
+                        "id": 1,
+                        "ques": "What is the difference between a WAF and a traditional firewall?",
+                        "content": "A traditional firewall operates at the network level, controlling traffic based on IP addresses and ports. A WAF operates at the application layer (Layer 7), understanding HTTP/S traffic specifically to detect and block application-level attacks like SQL injection and cross-site scripting that traditional firewalls cannot identify."
+                    },
+                    {
+                        "id": 2,
+                        "ques": "Can a WAF protect applications that are not yet patched for known vulnerabilities?",
+                        "content": "Yes, this is one of the key benefits of a WAF. Through virtual patching, a WAF can protect vulnerable applications by blocking exploit attempts at the perimeter, buying you time to properly patch the underlying application without exposing your business to risk."
+                    },
+                    {
+                        "id": 3,
+                        "ques": "Will a WAF impact my application's performance?",
+                        "content": "When properly implemented, a WAF should have minimal impact on performance. Our F5 solutions are built on high-performance hardware and software designed to inspect traffic efficiently. We also carefully tune policies to balance security with performance based on your specific application requirements."
+                    }
+                ],
+                cta: "Ready to shield your web applications from cyber threats? Contact us today for a consultation with our WAF experts."
             }
         ]
     },
